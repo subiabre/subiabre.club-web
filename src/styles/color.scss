@@ -3,6 +3,15 @@
     border-color: $color;
 }
 
+.is-visible {
+    visibility: visible;
+}
+
+.is-hidden {
+    display: inherit;
+    visibility: hidden; 
+}
+
 .color-body {
     @include color($color-body);
 }
