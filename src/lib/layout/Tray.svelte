@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { onMount } from "svelte";
+
     let currentSlideId: string | undefined;
 
     $: console.log(currentSlideId);
@@ -36,6 +38,10 @@
             .querySelectorAll(".slide")
             .forEach((slide) => observer.observe(slide));
     }
+
+    onMount(() => {
+        track();
+    });
 </script>
 
 <main class="tray" on:scroll={track}>
