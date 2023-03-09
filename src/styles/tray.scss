@@ -4,6 +4,7 @@
     scrollbar-gutter: stable;
 
     display: flex;
+    gap: 1.5rem;
 
     overflow-y: hidden;
     overflow-x: scroll;
@@ -11,11 +12,20 @@
     -webkit-overflow-scrolling: touch;
 
     .slide {
-        min-width: 100vw;
+        width: 100%;
+        max-width: 1024px;
         box-sizing: border-box;
     
         position: relative;
+        flex-shrink: 0;
     
-        scroll-snap-align: start;
+        scroll-snap-align: center;
+
+        filter: opacity(0.5);
+
+        &.current {
+            filter: opacity(1);
+            transition: filter 0.2s ease-in;
+        }
     }
 }

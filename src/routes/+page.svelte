@@ -9,10 +9,10 @@
     <TraySlideNav>
         <h1>Navigation</h1>
     </TraySlideNav>
-    <TraySlide id="test-slide-1">
+    <TraySlide id="slide1">
         <h1>Section 1</h1>
     </TraySlide>
-    <TraySlide id="test-slide-2">
+    <TraySlide id="slide2">
         <h1>Section 2</h1>
     </TraySlide>
 </Tray>
