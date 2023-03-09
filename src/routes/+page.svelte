@@ -6,34 +6,26 @@
 
 <Tray>
     <TraySlideNav>
-        <div class="padded">
-            <h1>Menú.</h1>
-        </div>
-        <ul class="padded menu">
+        <ul slot="photos" class="menu">
             <li>
-                <a class="color-body" href="/photos"><h2>Galería.</h2></a>
-                <ul class="menu">
-                    <li>
-                        <a class="color-body" href="/user#config"><h3>Filtros</h3></a>
-                    </li>
-                    <li>
-                        <a class="color-body" href="/user#config"><h3>Colección</h3></a>
-                    </li>
-                </ul>
+                <a class="color-body" href="/photos#filters"><h3>Filtros</h3></a
+                >
             </li>
             <li>
-                <a class="color-body" href="/user"><h2>Usuario.</h2></a>
-                <ul class="menu">
-                    <li>
-                        <a class="color-body" href="#config"><h3>Configuración</h3></a>
-                    </li>
-                    <li>
-                        <a class="color-body" href="#sessions"><h3>Sesiones</h3></a>
-                    </li>
-                    <li>
-                        <a class="color-body" href="#keys"><h3>Llaves</h3></a>
-                    </li>
-                </ul>
+                <a class="color-body" href="/photos#collection"
+                    ><h3>Colección</h3></a
+                >
+            </li>
+        </ul>
+        <ul slot="user" class="menu">
+            <li>
+                <a class="color-body" href="#config"><h3>Configuración</h3></a>
+            </li>
+            <li>
+                <a class="color-body" href="#sessions"><h3>Sesiones</h3></a>
+            </li>
+            <li>
+                <a class="color-body" href="#keys"><h3>Llaves</h3></a>
             </li>
         </ul>
     </TraySlideNav>

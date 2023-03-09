@@ -13,5 +13,17 @@
     on:keydown={scrollToHere}
     bind:this={slide}
 >
-    <slot />
+    <div class="padded">
+        <h1>Menú.</h1>
+    </div>
+    <ul class="padded menu">
+        <li class="page">
+            <a class="color-body" href="/photos"><h2>Galería.</h2></a>
+            <div class="slot"><slot name="photos" /></div>
+        </li>
+        <li class="page">
+            <a class="color-body" href="/user"><h2>Usuario.</h2></a>
+            <div class="slot"><slot name="user" /></div>
+        </li>
+    </ul>
 </nav>
