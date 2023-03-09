@@ -17,15 +17,15 @@
                     entry.intersectionRatio > 0.5 &&
                     currentSlideId === targetSlideId
                 ) {
-                    document
-                        .getElementById(currentSlideId ?? "")
-                        ?.classList.remove("fx-active-opacity");
+                    let element = document.getElementById(currentSlideId ?? "");
+                    element?.classList.remove("fx-active-opacity");
+                    element?.classList.add("fx-idle-opacity");
                 }
 
                 if (entry.intersectionRatio === 1) {
-                    document
-                        .getElementById(targetSlideId)
-                        ?.classList.add("fx-active-opacity");
+                    let element = document.getElementById(targetSlideId)
+                    element?.classList.remove("fx-idle-opacity");
+                    element?.classList.add("fx-active-opacity");
 
                     currentSlideId = targetSlideId;
                 }
