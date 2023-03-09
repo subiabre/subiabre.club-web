@@ -1,7 +1,7 @@
 <script lang="ts">
-    import Tray from "../lib/layout/Tray.svelte";
-    import TraySlide from "../lib/layout/TraySlide.svelte";
-    import TraySlideNav from "../lib/layout/TraySlideNav.svelte";
+    import Tray from "$lib/layout/Tray.svelte";
+    import TraySlide from "$lib/layout/TraySlide.svelte";
+    import TraySlideNav from "$lib/layout/TraySlideNav.svelte";
 </script>
 
 <Tray>
