@@ -1,2 +1,18 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script lang="ts">
+    import Tray from "../lib/layout/Tray.svelte";
+    import TraySlide from "../lib/layout/TraySlide.svelte";
+    import TraySlideNav from "../lib/layout/TraySlideNav.svelte";
+
+</script>
+
+<Tray>
+    <TraySlideNav>
+        <h1>Navigation</h1>
+    </TraySlideNav>
+    <TraySlide id="test-slide-1">
+        <h1>Section 1</h1>
+    </TraySlide>
+    <TraySlide id="test-slide-2">
+        <h1>Section 2</h1>
+    </TraySlide>
+</Tray>

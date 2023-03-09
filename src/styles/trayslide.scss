@@ -1,0 +1,12 @@
+.slide {
+    min-width: 100vw;
+    box-sizing: border-box;
+
+    position: relative;
+
+    scroll-snap-align: start;
+}
+
+.unused {
+    background-color: red;
+}
