@@ -5,30 +5,7 @@
 </script>
 
 <Tray>
-    <TraySlideNav>
-        <ul slot="photos" class="menu">
-            <li>
-                <a class="color-body" href="/photos#filters"><h3>Filtros</h3></a
-                >
-            </li>
-            <li>
-                <a class="color-body" href="/photos#collection"
-                    ><h3>Colección</h3></a
-                >
-            </li>
-        </ul>
-        <ul slot="user" class="menu">
-            <li>
-                <a class="color-body" href="#config"><h3>Configuración</h3></a>
-            </li>
-            <li>
-                <a class="color-body" href="#sessions"><h3>Sesiones</h3></a>
-            </li>
-            <li>
-                <a class="color-body" href="#keys"><h3>Llaves</h3></a>
-            </li>
-        </ul>
-    </TraySlideNav>
+    <TraySlideNav />
     <TraySlide id="config">
         <div class="padded">
             <h1>Configuración.</h1>
