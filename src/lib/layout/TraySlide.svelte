@@ -5,7 +5,3 @@
 <section {id} class="slide">
     <slot />
 </section>
-
-<style lang="scss">
-    @import "/src/styles/trayslide.scss";
-</style>

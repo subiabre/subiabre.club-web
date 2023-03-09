@@ -1,0 +1,21 @@
+.tray {
+    height: 100svh;
+    box-sizing: border-box;
+    scrollbar-gutter: stable;
+
+    display: flex;
+
+    overflow-y: hidden;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+
+    .slide {
+        min-width: 100vw;
+        box-sizing: border-box;
+    
+        position: relative;
+    
+        scroll-snap-align: start;
+    }
+}
