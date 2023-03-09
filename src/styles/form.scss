@@ -1,0 +1,31 @@
+form {
+    label {
+        color: darken($color: $color-body, $amount: 25);
+    }
+
+    input, button {
+        padding: 0;
+        
+        border: none;
+        color: $color-body;
+        background: transparent;
+        box-shadow: none;
+
+        &:focus,
+        &:focus-visible {
+            outline: transparent;
+        }
+    }
+
+    button, .button {
+        border-bottom: 0.2em solid $color-body;
+        font-weight: $font-weight-bold;
+
+        &:hover,
+        &:focus,
+        &:focus-visible {
+            cursor: pointer;
+            filter: brightness(75%);
+        }
+    }
+}

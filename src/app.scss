@@ -2,7 +2,10 @@
 
 @import "./styles/minireset.min.css";
 
-@import "./styles/tray.scss";
+@import "./styles/font.scss";
+@import "./styles/form.scss";
+@import "./styles/color.scss";
+@import "./styles/layout.scss";
 
 body.has-fxs {
     @import "./styles/fxs.scss";

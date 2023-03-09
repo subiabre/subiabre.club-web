@@ -1,0 +1,16 @@
+@mixin color($color) {
+    color: $color;
+    border-color: $color;
+}
+
+.color-body {
+    @include color($color-body);
+}
+
+.color-success {
+    @include color($color-success);
+}
+
+.color-danger {
+    @include color($color-danger);
+}
