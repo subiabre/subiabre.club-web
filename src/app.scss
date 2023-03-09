@@ -3,3 +3,7 @@
 @import "./styles/minireset.min.css";
 
 @import "./styles/tray.scss";
+
+body.has-fxs {
+    @import "./styles/fxs.scss";
+}

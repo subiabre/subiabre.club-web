@@ -19,13 +19,13 @@
                 ) {
                     document
                         .getElementById(currentSlideId ?? "")
-                        ?.classList.remove("current");
+                        ?.classList.remove("fx-active-opacity");
                 }
 
                 if (entry.intersectionRatio === 1) {
                     document
                         .getElementById(targetSlideId)
-                        ?.classList.add("current");
+                        ?.classList.add("fx-active-opacity");
 
                     currentSlideId = targetSlideId;
                 }

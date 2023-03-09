@@ -1,0 +1,8 @@
+.fx-idle-opacity {
+    filter: opacity(0.5);
+}
+
+.fx-active-opacity {
+    filter: opacity(1);
+    transition: filter 0.2s ease;
+}
