@@ -3,7 +3,7 @@
 
     let slide: HTMLElement;
 
-    function scrollToHere() {
+    function focus() {
         slide.scrollIntoView({ behavior: "smooth" });
     }
 </script>
@@ -11,8 +11,8 @@
 <nav
     id="nav"
     class="slide fx-idle-opacity"
-    on:click={scrollToHere}
-    on:keydown={scrollToHere}
+    on:click={focus}
+    on:keydown={focus}
     bind:this={slide}
 >
     <div class="padded">
