@@ -52,7 +52,39 @@ export const has: FxsSettingsStore = (() => {
     }
 })();
 
-export const sound = writable({
-    slide: false,
-    clack: false
-});
+interface SoundFxsState {
+    slide: boolean,
+    clack: boolean
+}
+
+interface SoundFxsStore extends Writable<SoundFxsState> {
+    playSlide: () => void;
+    playClack: () => void;
+}
+
+export const sound: SoundFxsStore = (() => {
+    const { subscribe, set, update } = writable({
+        slide: false,
+        clack: false
+    });
+
+    return {
+        subscribe, set, update,
+        playSlide: () => {
+            update((state) => { 
+                return {
+                    ...state,
+                    slide: true
+                }
+             })
+        },
+        playClack: () => {
+            update((state) => {
+                return {
+                    ...state,
+                    clack: true
+                }
+            })
+        }
+    }
+})();

@@ -30,7 +30,7 @@
                     currentSlideId !== undefined &&
                     currentSlideId !== targetSlideId
                 ) {
-                    $sound.slide = true;
+                    sound.playSlide();
                 }
 
                 if (entry.intersectionRatio === 1) {
