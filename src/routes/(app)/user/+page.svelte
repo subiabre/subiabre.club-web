@@ -1,43 +1,24 @@
 <script lang="ts">
-    import Tray from "$lib/layout/Tray.svelte";
     import TraySlide from "$lib/layout/TraySlide.svelte";
-    import TraySlideNav from "$lib/layout/TraySlideNav.svelte";
+    import FormEffectsSettings from "./FormEffectsSettings.svelte";
 </script>
 
 <TraySlide id="config">
     <div class="padded">
-        <h1>Configuración.</h1>
+        <h1>Configuración</h1>
         <p>
             Aquí puedes actualizar la información asociada a tu cuenta así como
             tus configuraciones de efectos.
         </p>
         <p>
             Las configuraciones de efectos no se sincronizan para todos tus
-            dispositivos, en cambio solo se guardarán en el navegador actual.
+            dispositivos, los cambios se guardarán en el navegador actual.
         </p>
     </div>
 
     <section class="padded">
         <h2>Efectos</h2>
-        <form>
-            <p>
-                <label for="check-soundfxs">
-                    <h6>Efectos de sonido</h6>
-                    <input id="check-soundfxs" type="checkbox" />
-                    <label for="check-soundfxs">Desactivados</label>
-                </label>
-            </p>
-
-            <p>
-                <label for="check-fxs">
-                    <h6>Efectos visuales</h6>
-                    <input id="check-fxs" type="checkbox" />
-                    <label for="check-fxs">Desactivados</label>
-                </label>
-            </p>
-
-            <p>Las elecciones de efectos se guardan automáticamente.</p>
-        </form>
+        <FormEffectsSettings />
     </section>
 
     <section class="padded">
@@ -96,7 +77,7 @@
 </TraySlide>
 <TraySlide id="sessions">
     <div class="padded">
-        <h1>Sesiones.</h1>
+        <h1>Sesiones</h1>
         <p>
             Las sesiones se crean cuando se usa tu usuario y contraseña, o una
             llave asociada a tu cuenta.
@@ -148,7 +129,7 @@
 </TraySlide>
 <TraySlide id="keys">
     <div class="padded">
-        <h1>Llaves.</h1>
+        <h1>Llaves</h1>
         <p>
             Las llaves son enlaces URL que garantizan acceso a tu cuenta al ser
             visitados

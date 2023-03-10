@@ -1,6 +1,6 @@
 <script lang="ts">
     import { api } from "$lib/api";
-    import { auth } from "$lib/stores";
+    import { auth, effects } from "$lib/stores";
     import { goto } from "$app/navigation";
     import Tray from "$lib/layout/Tray.svelte";
     import TraySlideNav from "$lib/layout/TraySlideNav.svelte";
@@ -16,7 +16,9 @@
         if (!session) return;
         const user = await api.call(session.owner).then((res) => res.json());
 
+        effects.init(user);
         auth.set({ user, session });
+
         isReady = true;
     });
 </script>
