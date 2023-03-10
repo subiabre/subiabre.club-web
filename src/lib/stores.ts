@@ -24,22 +24,30 @@ export const has: FxsSettingsStore = (() => {
         soundfxs: true
     });
 
+    const setFxs = (state: FxsSettingsState) => {
+        set(state);
+        if (state.vfxs) {
+            document.body.classList.add("has-vfxs");
+        } else {
+            document.body.classList.remove("has-vfxs");
+        }
+    };
+
     return {
-        subscribe, set, update,
+        subscribe, update,
+        set: (value: FxsSettingsState) => {
+            setFxs(value);
+        },
         init: (user: User) => {
             const init = localStorage.getItem(`${user.id}:has`);
             const state: FxsSettingsState = init ? JSON.parse(init) : { vfxs: true, soundfxs: true };
 
-            set(state);
+            setFxs(state);
         },
         save: (user:User, state: FxsSettingsState) => {
             localStorage.setItem(`${user.id}:has`, JSON.stringify(state));
 
-            if (state.vfxs) {
-                document.body.classList.add("has-vfxs");
-            } else {
-                document.body.classList.remove("has-vfxs");
-            }
+            setFxs(state);
         }
     }
 })();

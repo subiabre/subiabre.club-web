@@ -1,5 +1,4 @@
 <script lang="ts">
-    import { goto } from "$app/navigation";
     import { auth, has } from "$lib/stores";
 
     $: has.save($auth.user, $has);
