@@ -1,6 +1,13 @@
 <script lang="ts">
+    import { api } from "$lib/api";
+    import { auth } from "$lib/stores";
     import TraySlide from "$lib/layout/TraySlide.svelte";
     import FormEffectsSettings from "./FormEffectsSettings.svelte";
+    import FormPassword from "./FormPassword.svelte";
+    import FormUsername from "./FormUsername.svelte";
+    import SessionList from "./SessionList.svelte";
+
+    let sessions = api.userSessions.getCollection($auth.user.id);
 </script>
 
 <TraySlide id="config">
@@ -8,11 +15,11 @@
         <h1>Configuración</h1>
         <p>
             Aquí puedes actualizar la información asociada a tu cuenta así como
-            tus configuraciones de efectos.
+            tu configuración de efectos.
         </p>
         <p>
-            Las configuraciones de efectos no se sincronizan para todos tus
-            dispositivos, los cambios se guardarán en el navegador actual.
+            Los cambios en tu configuración de efectos se guardarán en el
+            navegador actual y no se sincronizarán para todas tus sesiones.
         </p>
     </div>
 
@@ -23,56 +30,12 @@
 
     <section class="padded">
         <h2>Nombre</h2>
-        <form>
-            <p>
-                <label for="input-username">
-                    <h6>Nombre</h6>
-                    <input
-                        id="input-username"
-                        type="text"
-                        placeholder="Nuevo nombre de usuario"
-                    />
-                </label>
-            </p>
-
-            <p>
-                <button class="color-success"
-                    >Actualizar nombre de usuario</button
-                >
-            </p>
-        </form>
+        <FormUsername />
     </section>
 
     <section class="padded">
         <h2>Contraseña</h2>
-        <form>
-            <p>
-                <label for="input-password-current">
-                    <h6>Contraseña actual</h6>
-                    <input
-                        id="input-password-current"
-                        type="password"
-                        placeholder="******"
-                    />
-                </label>
-            </p>
-
-            <p>
-                <label for="input-password-new">
-                    <h6>Contraseña nueva</h6>
-                    <input
-                        id="input-password-new"
-                        type="password"
-                        placeholder="*****"
-                    />
-                </label>
-            </p>
-
-            <p>Esta acción destruirá todas tus sesiones actuales.</p>
-            <p>
-                <button class="color-success">Actualizar contraseña</button>
-            </p>
-        </form>
+        <FormPassword />
     </section>
 </TraySlide>
 <TraySlide id="sessions">
@@ -83,61 +46,26 @@
             llave asociada a tu cuenta.
         </p>
         <p>
-            Las sesiones vigentes evitan que tengas que autentificar tu
-            identidad en cada conexión, pero sólo tienen validez hasta dos
-            semanas después de la última conexión.
+            Las sesiones evitan que tengas que autentificarte en cada conexión,
+            pero sólo tienen validez hasta dos semanas después de tu última
+            actividad.
         </p>
     </div>
-    <section class="padded grid">
-        <form>
-            <h2>Sesión #1 <span class="color-success">(ACTUAL)</span></h2>
-            <p>Firefox 110.0.0 en Ubuntu</p>
-            <p>Creada hace 8 horas</p>
-            <p>Caduca dentro de 2 semanas</p>
-            <p>
-                <button class="color-danger">Destruir</button>
-            </p>
-        </form>
-        <form>
-            <h2>Sesión #2</h2>
-            <p>Firefox 110.0.0 en Ubuntu</p>
-            <p>Creada hace 16 días</p>
-            <p>Caduca dentro de 9 días</p>
-            <p>
-                <button class="color-danger">Destruir</button>
-            </p>
-        </form>
-        <form>
-            <h2>Sesión #3</h2>
-            <p>Hacker 0 en Rusia</p>
-            <p>Creada hace 1 segundo</p>
-            <p>Caduca dentro 64 años</p>
-            <p>
-                <button class="color-danger">Destruir</button>
-            </p>
-        </form>
-        <form>
-            <h2>Sesión #4</h2>
-            <p>Chrome 110.0.0 en Linux</p>
-            <p>Creada hace 9 horas</p>
-            <p>Caduca dentro de 2 semanas</p>
-            <p>
-                <button class="color-danger">Destruir</button>
-            </p>
-        </form>
-    </section>
+    {#await sessions then sessions}
+        <SessionList {sessions} />
+    {/await}
 </TraySlide>
 <TraySlide id="keys">
     <div class="padded">
         <h1>Llaves</h1>
         <p>
             Las llaves son enlaces URL que garantizan acceso a tu cuenta al ser
-            visitados
+            visitados.
         </p>
         <p>
-            Las llaves pueden usarse indiscriminadamente durante su periodo de
-            vigencia. Para evitar problemas de seguridad, <strong
-                >evita que otras personas vean tus llaves</strong
+            Las llaves pueden usarse indiscriminadamente antes de caducar. Para
+            evitar problemas de seguridad, <strong
+                >evita que otras personas las vean</strong
             >.
         </p>
     </div>
@@ -146,7 +74,7 @@
         <form>
             <p>
                 <label for="select-date-expires">
-                    <h6>Vigencia</h6>
+                    <h6>Esta llave caduca después de</h6>
                     <select>
                         <option>1 día</option>
                         <option>2 días</option>
