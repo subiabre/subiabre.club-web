@@ -6,8 +6,10 @@
     import FormPassword from "./FormPassword.svelte";
     import FormUsername from "./FormUsername.svelte";
     import SessionList from "./SessionList.svelte";
+    import KeyList from "./KeyList.svelte";
 
     let sessions = api.userSessions.getCollection($auth.user.id);
+    let keys = api.userKeys.getCollection($auth.user.id);
 </script>
 
 <TraySlide id="config">
@@ -69,43 +71,7 @@
             >.
         </p>
     </div>
-    <section class="padded">
-        <h2>Crear llave</h2>
-        <form>
-            <p>
-                <label for="select-date-expires">
-                    <h6>Esta llave caduca después de</h6>
-                    <select>
-                        <option>1 día</option>
-                        <option>2 días</option>
-                        <option>3 días</option>
-                    </select>
-                </label>
-            </p>
-
-            <p>
-                <button class="color-success">Crear llave</button>
-            </p>
-        </form>
-    </section>
-    <section class="padded grid">
-        <form>
-            <h2>Llave #1</h2>
-            <p>abcd...1234</p>
-            <p>Creada hace 8 horas</p>
-            <p>Caduca dentro de 2 semanas</p>
-            <p>
-                <figure>
-                    <img
-                        style="background-color: white;"
-                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/QR_code_for_mobile_English_Wikipedia.svg/240px-QR_code_for_mobile_English_Wikipedia.svg.png"
-                    />
-                </figure>
-            </p>
-            <p>
-                <span class="button">Copiar</span>
-                <button class="color-danger">Destruir</button>
-            </p>
-        </form>
-    </section>
+    {#await keys then keys}
+        <KeyList {keys} />
+    {/await}
 </TraySlide>
