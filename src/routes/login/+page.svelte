@@ -22,11 +22,13 @@
         api.auth
             .user(username, password)
             .then(async (session) => {
-                const user = await api.call(session.owner).then(res => res.json());
+                const user = await api
+                    .call(session.owner)
+                    .then((res) => res.json());
 
                 return { user, session };
             })
-            .then(data => {
+            .then((data) => {
                 auth.set(data);
 
                 goto("/");
@@ -36,9 +38,15 @@
 </script>
 
 <Tray>
-    <TraySlide id="login-username">
+    <TraySlide id="login-password" bind:this={passwordSlide}>
         <div class="padded">
-            <form on:submit={handleUsername}>
+            <h1>Hola{username ? `, ${username}` : ""}.</h1>
+            <p>
+                Si has perdido tu usuario y contraseña contacta con la persona
+                que te invitó.
+            </p>
+
+            <form on:submit={handleSubmit}>
                 <p class={authError ? "is-visible" : "is-hidden"}>
                     <label for="input-password" class="color-danger">
                         <h5>Usuario o contraseña incorrectos</h5>
@@ -53,20 +61,6 @@
                             placeholder="Larry"
                             bind:value={username}
                         />
-                    </label>
-                </p>
-                <p>
-                    <button>Entrar</button>
-                </p>
-            </form>
-        </div>
-    </TraySlide>
-    <TraySlide id="login-password" bind:this={passwordSlide}>
-        <div class="padded">
-            <form on:submit={handleSubmit}>
-                <p class={authError ? "is-visible" : "is-hidden"}>
-                    <label for="input-password" class="color-danger">
-                        <h5>Usuario o contraseña incorrectos</h5>
                     </label>
                 </p>
                 <p>

@@ -16,7 +16,7 @@
     bind:this={slide}
 >
     <div class="padded">
-        <h1>Menú.</h1>
+        <h1>Menú</h1>
     </div>
     <ul class="padded menu">
         <li
@@ -25,7 +25,7 @@
             on:mouseleave={() => ($sound.clack = true)}
         >
             <a class="color-body" href="/photos">
-                <h2>Galería.</h2>
+                <h2>Galería</h2>
             </a>
             <ul class="menu slot">
                 <li>
@@ -45,7 +45,7 @@
             on:mouseenter={() => ($sound.clack = true)}
             on:mouseleave={() => ($sound.clack = true)}
         >
-            <a class="color-body" href="/user"><h2>Usuario.</h2></a>
+            <a class="color-body" href="/user"><h2>Usuario</h2></a>
             <ul class="menu slot">
                 <li>
                     <a class="color-body" href="/user#config"
