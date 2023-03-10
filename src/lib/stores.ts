@@ -43,3 +43,8 @@ export const has: FxsSettingsStore = (() => {
         }
     }
 })();
+
+export const sound = writable({
+    slide: false,
+    clack: false
+});

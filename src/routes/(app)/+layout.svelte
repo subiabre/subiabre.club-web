@@ -5,6 +5,7 @@
     import Tray from "$lib/layout/Tray.svelte";
     import TraySlideNav from "$lib/layout/TraySlideNav.svelte";
     import { onMount } from "svelte";
+    import SoundEffects from "$lib/layout/SoundEffects.svelte";
 
     let isReady = false;
 
@@ -28,4 +29,5 @@
         <TraySlideNav />
         <slot />
     </Tray>
+    <SoundEffects />
 {/if}

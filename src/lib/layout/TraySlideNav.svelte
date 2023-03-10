@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { sound } from "$lib/stores";
+
     let slide: HTMLElement;
 
     function scrollToHere() {
@@ -17,11 +19,18 @@
         <h1>Menú.</h1>
     </div>
     <ul class="padded menu">
-        <li class="page">
-            <a class="color-body" href="/photos"><h2>Galería.</h2></a>
+        <li
+            class="page"
+            on:mouseenter={() => ($sound.clack = true)}
+            on:mouseleave={() => ($sound.clack = true)}
+        >
+            <a class="color-body" href="/photos">
+                <h2>Galería.</h2>
+            </a>
             <ul class="menu slot">
                 <li>
-                    <a class="color-body" href="/photos#filters"><h3>Filtros</h3></a
+                    <a class="color-body" href="/photos#filters"
+                        ><h3>Filtros</h3></a
                     >
                 </li>
                 <li>
@@ -31,14 +40,22 @@
                 </li>
             </ul>
         </li>
-        <li class="page">
+        <li
+            class="page"
+            on:mouseenter={() => ($sound.clack = true)}
+            on:mouseleave={() => ($sound.clack = true)}
+        >
             <a class="color-body" href="/user"><h2>Usuario.</h2></a>
             <ul class="menu slot">
                 <li>
-                    <a class="color-body" href="/user#config"><h3>Configuración</h3></a>
+                    <a class="color-body" href="/user#config"
+                        ><h3>Configuración</h3></a
+                    >
                 </li>
                 <li>
-                    <a class="color-body" href="/user#sessions"><h3>Sesiones</h3></a>
+                    <a class="color-body" href="/user#sessions"
+                        ><h3>Sesiones</h3></a
+                    >
                 </li>
                 <li>
                     <a class="color-body" href="/user#keys"><h3>Llaves</h3></a>

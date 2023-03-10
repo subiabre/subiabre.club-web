@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { sound } from "$lib/stores";
     import { onMount } from "svelte";
 
     let currentSlideId: string | undefined;
@@ -24,8 +25,16 @@
                     element?.classList.add("fx-idle-opacity");
                 }
 
+                if (
+                    entry.intersectionRatio === 1 &&
+                    currentSlideId !== undefined &&
+                    currentSlideId !== targetSlideId
+                ) {
+                    $sound.slide = true;
+                }
+
                 if (entry.intersectionRatio === 1) {
-                    let element = document.getElementById(targetSlideId)
+                    let element = document.getElementById(targetSlideId);
                     element?.classList.remove("fx-idle-opacity");
                     element?.classList.add("fx-active-opacity");
 
