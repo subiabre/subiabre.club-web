@@ -1,12 +1,7 @@
 <script lang="ts">
-    import { auth, effects } from "$lib/stores";
+    import { auth, has } from "$lib/stores";
 
-    $: effects.save($auth.user, $effects);
-    $: if ($effects.vfxs) {
-        document.body.classList.add("has-fxs");
-    } else {
-        document.body.classList.remove("has-fxs");
-    }
+    $: has.save($auth.user, $has);
 </script>
 
 <form>
@@ -16,10 +11,10 @@
             <input
                 id="check-fxs"
                 type="checkbox"
-                bind:checked={$effects.vfxs}
+                bind:checked={$has.vfxs}
             />
             <label for="check-fxs">
-                {$effects.vfxs ? "Activados" : "Desactivados"}
+                {$has.vfxs ? "Activados" : "Desactivados"}
             </label>
         </label>
     </p>
@@ -30,10 +25,10 @@
             <input
                 id="check-soundfxs"
                 type="checkbox"
-                bind:checked={$effects.soundfxs}
+                bind:checked={$has.soundfxs}
             />
             <label for="check-soundfxs">
-                {$effects.soundfxs ? "Activados" : "Desactivados"}
+                {$has.soundfxs ? "Activados" : "Desactivados"}
             </label>
         </label>
     </p>

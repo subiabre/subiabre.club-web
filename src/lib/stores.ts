@@ -8,17 +8,17 @@ interface AuthState {
 
 export const auth: Writable<AuthState> = writable();
 
-interface FxsState {
+interface FxsSettingsState {
     vfxs: boolean,
     soundfxs: boolean
 }
 
-interface FxsStore extends Writable<FxsState> {
+interface FxsSettingsStore extends Writable<FxsSettingsState> {
     init: (user: User) => void;
-    save: (user: User, state: FxsState) => void;
+    save: (user: User, state: FxsSettingsState) => void;
 }
 
-export const effects: FxsStore = (() => {
+export const has: FxsSettingsStore = (() => {
     const { subscribe, set, update } = writable({
         vfxs: true,
         soundfxs: true
@@ -27,13 +27,19 @@ export const effects: FxsStore = (() => {
     return {
         subscribe, set, update,
         init: (user: User) => {
-            const init = localStorage.getItem(`${user.id}:fxs`);
-            const state: FxsState = init ? JSON.parse(init) : { vfxs: true, soundfxs: true };
+            const init = localStorage.getItem(`${user.id}:has`);
+            const state: FxsSettingsState = init ? JSON.parse(init) : { vfxs: true, soundfxs: true };
 
             set(state);
         },
-        save: (user:User, state: FxsState) => {
-            localStorage.setItem(`${user.id}:fxs`, JSON.stringify(state));
+        save: (user:User, state: FxsSettingsState) => {
+            localStorage.setItem(`${user.id}:has`, JSON.stringify(state));
+
+            if (state.vfxs) {
+                document.body.classList.add("has-vfxs");
+            } else {
+                document.body.classList.remove("has-vfxs");
+            }
         }
     }
 })();
