@@ -4,13 +4,14 @@ form {
         color: darken($color: $color-body, $amount: 25);
     }
 
-    input, button {
+    input, button, select {
         padding: 0;
         
         border: none;
         color: $color-body;
         background: transparent;
         box-shadow: none;
+        font-size: inherit;
 
         &:focus,
         &:focus-visible {

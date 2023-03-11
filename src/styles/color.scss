@@ -23,3 +23,7 @@
 .color-danger {
     @include color($color-danger);
 }
+
+.color-warning {
+    @include color($color-warning);
+}
