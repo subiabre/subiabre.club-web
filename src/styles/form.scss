@@ -18,7 +18,7 @@ form {
     }
 
     button, .button {
-        border-bottom: 0.2em solid $color-body;
+        border-bottom: 0.2em solid;
         font-weight: $font-weight-bold;
 
         &:hover,

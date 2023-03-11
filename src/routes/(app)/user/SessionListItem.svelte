@@ -24,12 +24,12 @@
 <form on:submit={handleSubmit}>
     <h2>
         Sesión #{session.id}
-        {#if session.id === $auth.session.id}
-            <span class="color-success">(ACTUAL)</span>
-        {/if}
     </h2>
     <p title={session.userAgent}>
         <strong>{userAgent.browser}</strong> en <strong>{userAgent.os}</strong>
+        {#if session.id === $auth.session.id}
+            <span class="color-success">(Actual)</span>
+        {/if}
     </p>
     <p>Creada <span class="font-weight-medium">{dateCreated}</span></p>
     <p>Caduca <span class="font-weight-medium">{dateExpires}</span></p>

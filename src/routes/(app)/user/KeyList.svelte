@@ -8,6 +8,10 @@
     function handleCreation(event: CustomEvent) {
         keys = [...keys, event.detail.key];
     }
+
+    function handleDeletion(event: CustomEvent) {
+        keys = keys.filter((key) => key.id !== event.detail.key.id);
+    }
 </script>
 
 <section class="padded">
@@ -16,6 +20,6 @@
 </section>
 <section class="padded grid">
     {#each keys as key}
-        <KeyListItem {key} />
+        <KeyListItem {key} on:deletion={handleDeletion} />
     {/each}
 </section>
