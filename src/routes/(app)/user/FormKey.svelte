@@ -19,9 +19,17 @@
 </script>
 
 <form on:submit={handleSubmit}>
+    <p />
+    <p class="color-warning">
+        Las llaves otorgan acceso a tu cuenta igual que tu usuario y contraseña.
+    </p>
+    <p>
+        Evita exponer tus llaves a la vista de otras personas y no compartas el
+        enlace con nadie.
+    </p>
     <p>
         <label for="select-date-expires">
-            <h6>Esta llave caduca después de</h6>
+            Caduca después de
             <select id="select-date-expires" on:change={handleChange}>
                 <option selected value="+1day">1 día</option>
                 <option value="+2days">2 días</option>
@@ -30,7 +38,6 @@
             </select>
         </label>
     </p>
-
     <p>
         <button class="color-success">Crear llave</button>
     </p>
