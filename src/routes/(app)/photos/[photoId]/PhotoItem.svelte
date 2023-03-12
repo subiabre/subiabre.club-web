@@ -1,10 +1,10 @@
 <script lang="ts">
     import { api } from "$lib/api";
     import { time } from "$lib/human/time";
-    import PhotoItemImage from "./PhotoItemImage.svelte";
     import type { Photo } from "$lib/api/types/Photo";
     import type { Location } from "$lib/api/types/Location";
     import PhotoItemLocation from "./PhotoItemLocation.svelte";
+    import PhotoItemImage from "./PhotoItemImage.svelte";
 
     export let photo: Photo;
 
