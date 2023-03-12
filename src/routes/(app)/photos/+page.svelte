@@ -7,6 +7,7 @@
     import FilterLocation from "./FilterLocation.svelte";
     import type { Photo } from "$lib/api/types/Photo";
     import PhotoListItem from "./PhotoListItem.svelte";
+    import PhotoItem from "./PhotoItem.svelte";
 
     let item: TraySlide;
     let photo: Promise<Photo>;
@@ -56,12 +57,9 @@
     {/await}
 </TraySlide>
 <TraySlide id="item" bind:this={item}>
-    <div class="padded">
-        <h1>Elemento</h1>
-        {#if photo}
-            {#await photo then photo}
-                <PhotoListItem {photo} />
-            {/await}
-        {/if}
-    </div>
+    {#if photo}
+        {#await photo then photo}
+            <PhotoItem {photo} />
+        {/await}
+    {/if}
 </TraySlide>

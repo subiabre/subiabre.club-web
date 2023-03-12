@@ -9,5 +9,8 @@ export const time = {
         const ago = new TimeAgo("es-ES");
 
         return ago.format(date);
+    },
+    year: (value: string | number | Date) => {
+        return (new Date(value)).getFullYear();
     }
 }

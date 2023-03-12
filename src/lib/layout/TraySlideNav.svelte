@@ -59,7 +59,7 @@
                 </li>
                 <li>
                     <a
-                        href="/photos#collection"
+                        href="/photos#results"
                         on:mouseenter={() =>
                             "/photos#collection" !== $page.url.pathname &&
                             sound.playClack()}><h3>Colección</h3></a
