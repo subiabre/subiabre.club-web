@@ -10,7 +10,7 @@
 
 <section
     {id}
-    class="slide fx-idle-opacity"
+    class="slide"
     on:click={focus}
     on:keydown={focus}
     bind:this={slide}

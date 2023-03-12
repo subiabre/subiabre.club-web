@@ -18,11 +18,11 @@
     }
 }
 
-.fx-idle-opacity {
+.slide {
     filter: opacity(0.25);
 }
 
-.fx-active-opacity {
+.slide.current {
     filter: opacity(1);
     transition: filter 0.2s ease;
 }

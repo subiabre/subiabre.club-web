@@ -4,8 +4,6 @@
 
     let currentSlideId: string | undefined;
 
-    $: console.log(currentSlideId);
-
     function track() {
         const observer = new IntersectionObserver((entries) => {
             for (let index = 0; index < entries.length; index++) {
@@ -21,8 +19,7 @@
                     currentSlideId === targetSlideId
                 ) {
                     let element = document.getElementById(currentSlideId ?? "");
-                    element?.classList.remove("fx-active-opacity");
-                    element?.classList.add("fx-idle-opacity");
+                    element?.classList.remove("current");
                 }
 
                 if (
@@ -35,8 +32,7 @@
 
                 if (entry.intersectionRatio === 1) {
                     let element = document.getElementById(targetSlideId);
-                    element?.classList.remove("fx-idle-opacity");
-                    element?.classList.add("fx-active-opacity");
+                    element?.classList.add("current");
 
                     currentSlideId = targetSlideId;
                 }
