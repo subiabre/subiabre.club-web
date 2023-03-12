@@ -1,7 +1,12 @@
 <script lang="ts">
+    import { api } from "$lib/api";
     import TraySlide from "$lib/layout/TraySlide.svelte";
     import FilterDate from "./FilterDate.svelte";
+    import PhotoList from "./PhotoList.svelte";
+
+    let photos = api.photos.getCollection();
 </script>
+
 <TraySlide id="filters">
     <div class="padded">
         <h1>Filtros</h1>
@@ -27,18 +32,7 @@
     <div class="padded">
         <h1>Colección</h1>
     </div>
-    <div class="padded grid">
-        <figure>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/C77190s1_Ant.Map_Ross_Island.jpg/320px-C77190s1_Ant.Map_Ross_Island.jpg" />
-        </figure>
-        <figure>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/C77190s1_Ant.Map_Ross_Island.jpg/320px-C77190s1_Ant.Map_Ross_Island.jpg" />
-        </figure>
-        <figure>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/C77190s1_Ant.Map_Ross_Island.jpg/320px-C77190s1_Ant.Map_Ross_Island.jpg" />
-        </figure>
-        <figure>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/C77190s1_Ant.Map_Ross_Island.jpg/320px-C77190s1_Ant.Map_Ross_Island.jpg" />
-        </figure>
-    </div>
+    {#await photos then photos}
+        <PhotoList {photos} />
+    {/await}
 </TraySlide>
