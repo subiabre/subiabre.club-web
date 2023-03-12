@@ -5,6 +5,11 @@
     import FilterDate from "./FilterDate.svelte";
     import PhotoList from "./PhotoList.svelte";
     import FilterLocation from "./FilterLocation.svelte";
+    import type { Photo } from "$lib/api/types/Photo";
+    import PhotoListItem from "./PhotoListItem.svelte";
+
+    let item: TraySlide;
+    let photo: Promise<Photo>;
 
     $: photos = api.photos.getCollection(
         new URLSearchParams([
@@ -13,7 +18,11 @@
         ])
     );
 
-    $: console.log($filters);
+    function handleSelection(event: any) {
+        item.focus();
+
+        photo = api.photos.get(event.detail.photo.id);
+    }
 </script>
 
 <TraySlide id="filters">
@@ -38,11 +47,21 @@
         </form>
     </div>
 </TraySlide>
-<TraySlide id="result">
+<TraySlide id="results">
     <div class="padded">
         <h1>Colección</h1>
     </div>
     {#await photos then photos}
-        <PhotoList {photos} />
+        <PhotoList {photos} on:selection={handleSelection} />
     {/await}
+</TraySlide>
+<TraySlide id="item" bind:this={item}>
+    <div class="padded">
+        <h1>Elemento</h1>
+        {#if photo}
+            {#await photo then photo}
+                <PhotoListItem {photo} />
+            {/await}
+        {/if}
+    </div>
 </TraySlide>

@@ -1,3 +1,4 @@
+import { error } from "@sveltejs/kit";
 import type { Photo } from "../types/Photo";
 import type { Client } from "./Client";
 
@@ -10,5 +11,15 @@ export class PhotosClient {
 
     public async getCollection(search?: URLSearchParams): Promise<Photo[]> {
         return this.client.call('/api/photos?' + search).then(res => res.json());
+    }
+
+    public async get(photoId: number): Promise<Photo> {
+        const res = await this.client.call(`/api/photos/${photoId}`);
+
+        if (res.status === 200) {
+            return res.json();
+        }
+
+        throw error(res.status, res.statusText);
     }
 }

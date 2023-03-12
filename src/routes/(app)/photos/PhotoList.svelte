@@ -7,6 +7,6 @@
 
 <section class="padded grid-250">
     {#each photos as photo (photo.id)}
-        <PhotoListItem {photo} />
+        <PhotoListItem {photo} on:selection />
     {/each}
 </section>
