@@ -1,5 +1,6 @@
 <script lang="ts">
     import { api } from "$lib/api";
+    import { filters } from "$lib/stores";
     import RangeSlider from "svelte-range-slider-pips";
 
     let min = api.photos
@@ -8,13 +9,32 @@
             return photos.filter((photos) => photos.date.min);
         })
         .then((photos) => {
-            return new Date(photos[0]?.date.min ?? photos[0].date.max).getFullYear();
+            return new Date(photos[0]?.date.min ?? "").getFullYear();
         });
     let max = api.photos
         .getCollection(new URLSearchParams([["date[order]", "desc"]]))
         .then((photos) => {
             return new Date(photos[0]?.date.max).getFullYear();
         });
+
+    function handleChange(event: any) {
+        const values = event.detail.values;
+
+        filters.update((params) => {
+            return [
+                ...params.filter((param) => param[0] !== "date[from]"),
+                ...params.filter((param) => param[0] !== "date[to]"),
+                [
+                    "date[from]",
+                    new Date(values[0], 0, 2).toISOString().split("T")[0],
+                ],
+                [
+                    "date[to]",
+                    new Date(values[1], 11, 32).toISOString().split("T")[0],
+                ],
+            ];
+        });
+    }
 </script>
 
 <div>
@@ -30,6 +50,7 @@
                 step={1}
                 pips={true}
                 pipstep={5}
+                on:change={handleChange}
             />
         {/await}
     {/await}

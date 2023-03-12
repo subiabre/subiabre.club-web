@@ -1,10 +1,15 @@
 <script lang="ts">
     import { api } from "$lib/api";
+    import { filters } from "$lib/stores";
     import TraySlide from "$lib/layout/TraySlide.svelte";
     import FilterDate from "./FilterDate.svelte";
     import PhotoList from "./PhotoList.svelte";
 
-    let photos = api.photos.getCollection();
+    $: photos = api.photos.getCollection(
+        new URLSearchParams(
+           $filters.filter((param) => param.length === 2)
+        )
+    );
 </script>
 
 <TraySlide id="filters">

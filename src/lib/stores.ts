@@ -88,3 +88,5 @@ export const sound: SoundFxsStore = (() => {
         }
     }
 })();
+
+export const filters: Writable<[string, string][]> = writable([]);
