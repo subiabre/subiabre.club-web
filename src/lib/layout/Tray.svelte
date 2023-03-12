@@ -1,6 +1,7 @@
 <script lang="ts">
     import { sound } from "$lib/stores";
     import { onMount } from "svelte";
+    import { afterNavigate } from "$app/navigation";
 
     let currentSlideId: string | undefined;
 
@@ -45,6 +46,10 @@
     }
 
     onMount(() => {
+        track();
+    });
+
+    afterNavigate(() => {
         track();
     });
 </script>
