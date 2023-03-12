@@ -6,12 +6,20 @@
     max-width: 300px;
     list-style: none;
 
-    .menu {
-        padding: 0 1.5rem;
-    }
-
     li {
         margin: 1rem 0;
+
+        .menu li{
+            margin: 0;
+
+            a * {
+                margin: 0 1.5rem;
+            }
+        }
+    }
+
+    a {
+        color: $color-body;
     }
 }
 

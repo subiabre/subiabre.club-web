@@ -1,19 +1,10 @@
-#nav .page {
-    opacity: 0.5;
+#nav {
+    a {
+        opacity: 0.5;
 
-    .slot {
-        opacity: 0;
-    }
-
-    &:hover, &:hover .slot {
-        opacity: 1;
-
-        .slot a {
-            opacity: 0.5;
-
-            &:hover {
-                opacity: 1;
-            }
+        &:hover,
+        &.current {
+            opacity: 1;
         }
     }
 }
