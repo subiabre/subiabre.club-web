@@ -1,19 +1,38 @@
 <script lang="ts">
+    import { api } from "$lib/api";
     import RangeSlider from "svelte-range-slider-pips";
+
+    let min = api.photos
+        .getCollection(new URLSearchParams([["date[order]", "asc"]]))
+        .then((photos) => {
+            return photos.filter((photos) => photos.date.min);
+        })
+        .then((photos) => {
+            return new Date(photos[0]?.date.min ?? photos[0].date.max).getFullYear();
+        });
+    let max = api.photos
+        .getCollection(new URLSearchParams([["date[order]", "desc"]]))
+        .then((photos) => {
+            return new Date(photos[0]?.date.max).getFullYear();
+        });
 </script>
 
 <div>
-    <RangeSlider
-        min={1960}
-        max={2007}
-        values={[1960, 2007]}
-        range={true}
-        float={true}
-        all="label"
-        step={1}
-        pips={true}
-        pipstep={5}
-    />
+    {#await min then min}
+        {#await max then max}
+            <RangeSlider
+                {min}
+                {max}
+                values={[min, max]}
+                range={true}
+                float={true}
+                all="label"
+                step={1}
+                pips={true}
+                pipstep={5}
+            />
+        {/await}
+    {/await}
 </div>
 
 <style lang="scss">
