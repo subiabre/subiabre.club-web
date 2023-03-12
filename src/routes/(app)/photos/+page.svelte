@@ -4,6 +4,9 @@
 </script>
 <TraySlide id="filters">
     <div class="padded">
+        <h1>Filtros</h1>
+    </div>
+    <div class="padded">
         <h2>Cuándo</h2>
         <FilterDate />
     </div>
@@ -21,6 +24,9 @@
     </div>
 </TraySlide>
 <TraySlide id="result">
+    <div class="padded">
+        <h1>Colección</h1>
+    </div>
     <div class="padded grid">
         <figure>
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/C77190s1_Ant.Map_Ross_Island.jpg/320px-C77190s1_Ant.Map_Ross_Island.jpg" />
