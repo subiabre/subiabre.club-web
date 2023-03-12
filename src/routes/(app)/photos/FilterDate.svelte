@@ -77,6 +77,6 @@
     }
 
     div {
-        font-family: "Inter", sans-serif;
+        font-family: $font-family-body;
     }
 </style>

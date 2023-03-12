@@ -9,11 +9,11 @@
         api.call(photo.images[0]).then((res) => res.json()))();
 </script>
 
-<figure>
-    {#await cover then cover}
-        <img src={cover.path} alt={cover.description} />
-    {/await}
-</figure>
+{#await cover then cover}
+    <figure class={cover.metadata.height > cover.metadata.width ? "is-tall" : ""}>
+        <img src={cover.thumbnails[0].path} alt={cover.description} />
+    </figure>
+{/await}
 
 <style lang="scss">
     figure {
@@ -27,5 +27,9 @@
         height: 100%;
         object-fit: cover;
         border-radius: 5px;
+    }
+
+    .is-tall {
+        column-span: 2;
     }
 </style>
