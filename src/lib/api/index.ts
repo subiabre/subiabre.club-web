@@ -1,5 +1,6 @@
 import { AuthClient } from "./client/AuthClient";
 import { Client } from "./client/Client";
+import { PhotosClient } from "./client/PhotosClients";
 import { UserKeysClient } from "./client/UserKeysClient";
 import { UserSessionsClient } from "./client/UserSessionsClient";
 import { UsersClient } from "./client/UsersClient";
@@ -11,6 +12,7 @@ class ApiClient {
     public readonly users: UsersClient;
     public readonly userKeys: UserKeysClient;
     public readonly userSessions: UserSessionsClient;
+    public readonly photos: PhotosClient;
 
     constructor(url: string) {
         const client = new Client(url);
@@ -20,6 +22,7 @@ class ApiClient {
         this.users = new UsersClient(client);
         this.userKeys = new UserKeysClient(client);
         this.userSessions = new UserSessionsClient(client);
+        this.photos = new PhotosClient(client);
     }
 
     public call(iri: string, init?: RequestInit): Promise<Response> {
