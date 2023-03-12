@@ -12,6 +12,7 @@
   "devDependencies": {
     "@sveltejs/adapter-auto": "^2.0.0",
     "@sveltejs/kit": "^1.5.0",
+    "@types/qrcode": "^1.5.0",
     "@types/ua-parser-js": "^0.7.36",
     "sass": "^1.53.0",
     "svelte": "^3.54.0",
@@ -24,6 +25,7 @@
   "type": "module",
   "dependencies": {
     "javascript-time-ago": "^2.5.9",
+    "qrcode": "^1.5.1",
     "ua-parser-js": "^1.0.34"
   }
 }
