@@ -5,7 +5,7 @@
     export let photos: Photo[];
 </script>
 
-<section class="padded grid">
+<section class="padded grid-250">
     {#each photos as photo (photo.id)}
         <PhotoListItem {photo} />
     {/each}

@@ -18,7 +18,7 @@
     <h2>Crear llave</h2>
     <FormKey on:creation={handleCreation} />
 </section>
-<section class="padded grid">
+<section class="padded grid-250">
     {#each keys as key}
         <KeyListItem {key} on:deletion={handleDeletion} />
     {/each}

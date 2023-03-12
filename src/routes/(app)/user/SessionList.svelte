@@ -11,7 +11,7 @@
     }
 </script>
 
-<section class="padded grid">
+<section class="padded grid-250">
     {#each sessions as session (session.id)}
         <SessionListItem {session} on:deletion={handleDeletion} />
     {/each}

@@ -1,3 +1,10 @@
+@mixin grid($width) {
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax($width, 1fr));
+    grid-auto-flow: dense;
+}
+
 .padded {
     padding: 3em 1.5em;
 }
@@ -23,11 +30,16 @@
     }
 }
 
-.grid {
-    display: grid;
-    grid-gap: 1rem;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    grid-auto-flow: dense;
+.grid-180 {
+    @include grid(180px);
+}
+
+.grid-250 {
+    @include grid(250px);
+}
+
+.grid-360 {
+    @include grid(360px);
 }
 
 .tray {
