@@ -1,10 +1,11 @@
 <script lang="ts">
     import TraySlide from "$lib/layout/TraySlide.svelte";
+    import FilterDate from "./FilterDate.svelte";
 </script>
 <TraySlide id="filters">
     <div class="padded">
         <h2>Cuándo</h2>
-        <input type="range" />
+        <FilterDate />
     </div>
     <div class="padded">
         <h2>Dónde</h2>
