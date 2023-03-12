@@ -1,33 +1,35 @@
-form {
-    label {
-        text-transform: uppercase;
-        color: darken($color: $color-body, $amount: 25);
+label,
+.label {
+    text-transform: uppercase;
+    color: darken($color: $color-body, $amount: 25);
+}
+
+input,
+button,
+select {
+    padding: 0;
+
+    border: none;
+    color: $color-body;
+    background: transparent;
+    box-shadow: none;
+    font-size: inherit;
+
+    &:focus,
+    &:focus-visible {
+        outline: transparent;
     }
+}
 
-    input, button, select {
-        padding: 0;
-        
-        border: none;
-        color: $color-body;
-        background: transparent;
-        box-shadow: none;
-        font-size: inherit;
+button,
+.button {
+    border-bottom: 0.2em solid;
+    font-weight: $font-weight-bold;
 
-        &:focus,
-        &:focus-visible {
-            outline: transparent;
-        }
-    }
-
-    button, .button {
-        border-bottom: 0.2em solid;
-        font-weight: $font-weight-bold;
-
-        &:hover,
-        &:focus,
-        &:focus-visible {
-            cursor: pointer;
-            filter: brightness(75%);
-        }
+    &:hover,
+    &:focus,
+    &:focus-visible {
+        cursor: pointer;
+        filter: brightness(75%);
     }
 }
