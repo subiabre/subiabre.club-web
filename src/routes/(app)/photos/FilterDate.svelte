@@ -49,7 +49,7 @@
                 all="label"
                 step={1}
                 pips={true}
-                pipstep={5}
+                pipstep={10}
                 on:change={handleChange}
             />
         {/await}
