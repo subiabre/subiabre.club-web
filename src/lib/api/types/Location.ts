@@ -5,3 +5,10 @@ export interface Location {
     subregion: string,
     locality: string
 }
+
+export enum LocationLevel {
+    country = "country",
+    region = "region",
+    subregion = "subregion",
+    locality = "locality"
+}

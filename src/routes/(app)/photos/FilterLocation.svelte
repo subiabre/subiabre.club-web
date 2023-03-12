@@ -1,5 +1,8 @@
 <script lang="ts">
     import { api } from "$lib/api";
+    import { filters } from "$lib/stores";
+    import { LocationLevel } from "$lib/api/types/Location";
+    import FilterLocationItem from "./FilterLocationItem.svelte";
 
     $: countries = api.locations.getCollection(
         new URLSearchParams([
@@ -25,6 +28,31 @@
             ["exists[locality]", "true"],
         ])
     );
+
+    function handleClear(event: any) {
+        const level = event.detail.level;
+        const location = event.detail.location;
+
+        filters.update((params) => {
+            return params.filter((param) => {
+                switch (param[0] === `location.${level}[]`) {
+                    case true:
+                        return param[1] !== location[level];
+                    default:
+                        return true;
+                }
+            });
+        });
+    }
+
+    function handleSelection(event: any) {
+        const level = event.detail.level;
+        const location = event.detail.location;
+
+        filters.update((params) => {
+            return [...params, [`location.${level}[]`, location[level]]];
+        });
+    }
 </script>
 
 <div class="grid-180">
@@ -33,7 +61,12 @@
         <ul>
             {#await countries then countries}
                 {#each countries as country}
-                    <li>{country.country}</li>
+                    <FilterLocationItem
+                        location={country}
+                        level={LocationLevel.country}
+                        on:clear={handleClear}
+                        on:selection={handleSelection}
+                    />
                 {/each}
             {/await}
         </ul>
@@ -43,7 +76,12 @@
         <ul>
             {#await regions then regions}
                 {#each regions as region}
-                    <li>{region.region}</li>
+                    <FilterLocationItem
+                        location={region}
+                        level={LocationLevel.region}
+                        on:clear={handleClear}
+                        on:selection={handleSelection}
+                    />
                 {/each}
             {/await}
         </ul>
@@ -53,7 +91,12 @@
         <ul>
             {#await subregions then subregions}
                 {#each subregions as subregion}
-                    <li>{subregion.subregion}</li>
+                    <FilterLocationItem
+                        location={subregion}
+                        level={LocationLevel.subregion}
+                        on:clear={handleClear}
+                        on:selection={handleSelection}
+                    />
                 {/each}
             {/await}
         </ul>
@@ -63,7 +106,12 @@
         <ul>
             {#await localities then localities}
                 {#each localities as locality}
-                    <li>{locality.locality}</li>
+                    <FilterLocationItem
+                        location={locality}
+                        level={LocationLevel.locality}
+                        on:clear={handleClear}
+                        on:selection={handleSelection}
+                    />
                 {/each}
             {/await}
         </ul>
@@ -74,15 +122,5 @@
     ul {
         max-height: 90px;
         overflow-y: scroll;
-
-        li {
-            padding: 0.2em;
-
-            color: darken($color: $color-body, $amount: 50);
-
-            &:hover {
-                color: $color-body;
-            }
-        }
     }
 </style>

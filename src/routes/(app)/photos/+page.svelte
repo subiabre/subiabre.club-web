@@ -12,6 +12,8 @@
             ["date[order]", "asc"],
         ])
     );
+
+    $: console.log($filters);
 </script>
 
 <TraySlide id="filters">
