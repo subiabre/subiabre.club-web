@@ -23,7 +23,7 @@
         navigator.clipboard.writeText(url);
 
         keyCopy = true;
-        setInterval(() => {
+        setTimeout(() => {
             keyCopy = false;
         }, 2500);
     }
