@@ -1,0 +1,60 @@
+<script lang="ts">
+    import { time } from "$lib/human/time";
+    import type { Photo } from "$lib/api/types/Photo";
+    import { api } from "$lib/api";
+
+    export let photo: Photo;
+
+    let hasDateExact = photo.date.min ? false : true;
+
+    let dateMin = hasDateExact
+        ? undefined
+        : time.ymd(photo.date.min ?? photo.date.max);
+    let dateMax = time.ymd(photo.date.max);
+
+    let dateUpdated = false;
+
+    function handleSubmit() {
+        api.photos
+            .put(photo.id, {
+                ...photo,
+                date: {
+                    min: dateMin,
+                    max: dateMax,
+                },
+            })
+            .then((photo) => {
+                dateUpdated = true;
+                setTimeout(() => {
+                    dateUpdated = false;
+                }, 2500);
+            });
+    }
+</script>
+
+<form on:submit={handleSubmit}>
+    <h5>Cuándo</h5>
+    <p>
+        <label>
+            <h6>Fecha mínima</h6>
+            <input type="date" bind:value={dateMin} disabled={hasDateExact} />
+        </label>
+        <label>
+            <input type="checkbox" bind:checked={hasDateExact} />
+            Sé la fecha exacta
+        </label>
+    </p>
+    <p>
+        <label>
+            <h6>Fecha máxima/exacta</h6>
+            <input type="date" bind:value={dateMax} />
+        </label>
+    </p>
+    <p>
+        {#if dateUpdated}
+            <span class="button">Fecha actualizada</span>
+        {:else}
+            <button class="color-success">Confirmar</button>
+        {/if}
+    </p>
+</form>

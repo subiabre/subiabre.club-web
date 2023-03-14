@@ -22,4 +22,17 @@ export class PhotosClient {
 
         throw error(res.status, res.statusText);
     }
+
+    public async put(photoId: number, body: Photo): Promise<Photo> {
+        const res = await this.client.call(`/api/photos/${photoId}`, {
+            body: JSON.stringify(body),
+            method: 'PUT'
+        });
+
+        if (res.status === 200) {
+            return res.json();
+        }
+
+        throw error(res.status, res.statusText);
+    }
 }

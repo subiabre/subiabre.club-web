@@ -3,7 +3,9 @@
     import { page } from "$app/stores";
     import { onMount } from "svelte";
     import TraySlide from "$lib/layout/TraySlide.svelte";
-    import PhotoItem from "./PhotoItem.svelte";
+    import PhotoItemImage from "./PhotoItemImage.svelte";
+    import PhotoItemFormDate from "./PhotoItemFormDate.svelte";
+    import PhotoItemFormLocation from "./PhotoItemFormLocation.svelte";
 
     let item: TraySlide;
 
@@ -16,9 +18,16 @@
 </script>
 
 <TraySlide id="item" bind:this={item}>
-    {#if photo}
-        {#await photo then photo}
-            <PhotoItem {photo} />
-        {/await}
-    {/if}
+    <div class="padded">
+        <h1>Elemento</h1>
+    </div>
+    {#await photo then photo}
+        {#each photo.images as image}
+            <PhotoItemImage iri={image} />
+        {/each}
+        <div class="padded grid-360">
+            <PhotoItemFormDate {photo} />
+            <PhotoItemFormLocation {photo} />
+        </div>
+    {/await}
 </TraySlide>

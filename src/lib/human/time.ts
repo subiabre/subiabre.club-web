@@ -12,5 +12,8 @@ export const time = {
     },
     year: (value: string | number | Date) => {
         return (new Date(value)).getFullYear();
+    },
+    ymd: (value: string | number | Date) => {
+        return (new Date(value)).toISOString().split('T')[0]
     }
 }
