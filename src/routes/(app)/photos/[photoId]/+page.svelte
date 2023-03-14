@@ -5,7 +5,7 @@
     import TraySlide from "$lib/layout/TraySlide.svelte";
     import PhotoItemImage from "./PhotoItemImage.svelte";
     import PhotoItemFormDate from "./PhotoItemFormDate.svelte";
-    import PhotoItemFormLocation from "./PhotoItemFormLocation.svelte";
+    import PhotoItemPlaceForm from "./PhotoItemPlaceForm.svelte";
 
     let item: TraySlide;
 
@@ -27,7 +27,7 @@
         {/each}
         <div class="padded grid-360">
             <PhotoItemFormDate {photo} />
-            <PhotoItemFormLocation {photo} />
+            <PhotoItemPlaceForm {photo} />
         </div>
     {/await}
 </TraySlide>

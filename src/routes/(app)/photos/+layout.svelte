@@ -5,7 +5,6 @@
     import TraySlide from "$lib/layout/TraySlide.svelte";
     import FilterDate from "./FilterDate.svelte";
     import PhotoList from "./PhotoList.svelte";
-    import FilterLocation from "./FilterLocation.svelte";
 
     $: photos = api.photos.getCollection(
         new URLSearchParams([
@@ -29,7 +28,6 @@
     </div>
     <div class="padded">
         <h2>Dónde</h2>
-        <FilterLocation />
     </div>
     <div class="padded">
         <h2>Quién</h2>

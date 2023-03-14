@@ -7,7 +7,7 @@ export interface Photo {
     place?: {
         country?: string,
         region?: string,
-        subregion?: string,
+        regionLevel2?: string,
         locality?: string
     },
     images: string[],

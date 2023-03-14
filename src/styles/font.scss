@@ -2,7 +2,12 @@
     font-weight: $font-weight-medium;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     text-transform: uppercase;
     font-family: $font-family-heading;
     font-weight: $font-weight-bold;
@@ -32,7 +37,11 @@ h6 {
     font-size: 1.25em;
 }
 
-p, input, button {
+p,
+input,
+button,
+.button,
+textarea {
     font-size: 1em;
     font-family: $font-family-body;
     font-weight: $font-weight-regular;
