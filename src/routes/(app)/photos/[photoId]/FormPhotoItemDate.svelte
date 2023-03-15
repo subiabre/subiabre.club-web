@@ -33,7 +33,7 @@
 </script>
 
 <form on:submit={handleSubmit}>
-    <h5>Cuándo</h5>
+    <h5>Fecha</h5>
     <p>
         <label>
             <h6>Fecha mínima</h6>
@@ -54,7 +54,7 @@
         {#if dateUpdated}
             <span class="button">Fecha actualizada</span>
         {:else}
-            <button class="color-success">Confirmar</button>
+            <button class="color-success">Actualizar fecha</button>
         {/if}
     </p>
 </form>

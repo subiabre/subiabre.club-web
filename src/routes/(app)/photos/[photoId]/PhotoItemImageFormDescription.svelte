@@ -4,6 +4,12 @@
 
     export let image: Image;
 
+    let textarea: HTMLTextAreaElement;
+
+    export function focus() {
+        textarea.focus();
+    }
+
     function handleChange() {
         api.images.put(image.id, {
             description: image.description,
@@ -12,7 +18,8 @@
 </script>
 
 <textarea
-    placeholder="¿Qué está pasando en esta foto?"
+    placeholder="¿Qué se ve en esta imágen?"
     bind:value={image.description}
+    bind:this={textarea}
     on:input={handleChange}
 />

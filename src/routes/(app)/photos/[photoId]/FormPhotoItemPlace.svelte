@@ -32,7 +32,7 @@
 </script>
 
 <form on:submit={handleSubmit}>
-    <h5>Dónde</h5>
+    <h5>Lugar</h5>
     <div class="grid-180">
         <p>
             <label>

@@ -5,19 +5,32 @@
 
     export let iri: string;
 
+    let description: PhotoItemImageFormDescription;
+
     $: image = ((): Promise<Image> =>
         api.call(iri).then((res) => res.json()))();
+
+    function showOverlay() {
+        description.focus();
+    }
 </script>
 
 {#await image then image}
-    <figure>
-        <img alt={image.description} src={image.path} />
-    </figure>
-    <div class="padded">
-        <PhotoItemImageFormDescription {image} />
-    </div>
-    <div class="padded">
-        <h5>Quién</h5>
+    <div>
+        <figure on:touchstart={showOverlay}>
+            <img alt={image.description} src={image.path} />
+            <div class="padded overlay">
+                {#if image.portraits.length > 0}
+                    <h5>Quién</h5>
+                    <p class="label">
+                        No se ha identificado ningún rostro en esta imágen.
+                    </p>
+                {/if}
+                <p />
+                <h5>Descripción</h5>
+                <PhotoItemImageFormDescription {image} bind:this={description} />
+            </div>
+        </figure>
     </div>
 {/await}
 
@@ -27,5 +40,33 @@
 
         display: flex;
         justify-content: center;
+        position: relative;
+
+        &:hover,
+        &:focus-within {
+            .overlay {
+                opacity: 1;
+                transition: opacity 0.2s ease;
+            }
+        }
+
+        .overlay {
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            background: linear-gradient(
+                180deg,
+                rgba($color-background, 0) 0%,
+                rgba($color-background, 0.5) 50%,
+                rgba($color-background, 1) 100%
+            );
+
+            :global(*) {
+                text-shadow: 1px 1px $color-background;
+            }
+        }
     }
 </style>

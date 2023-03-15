@@ -18,16 +18,25 @@
 </script>
 
 <TraySlide id="item" bind:this={item}>
-    <div class="padded">
-        <h1>Elemento</h1>
-    </div>
     {#await photo then photo}
-        {#each photo.images as image}
-            <PhotoItemImage iri={image} />
-        {/each}
+        <div class="padded">
+            <h1>Foto #{photo.id}</h1>
+            <p>{photo.images.length} imágenes.</p>
+        </div>
+        <div>
+            {#each photo.images as image}
+                <PhotoItemImage iri={image} />
+            {/each}
+        </div>
         <div class="padded grid-360">
             <FormPhotoItemDate {photo} />
             <FormPhotoItemPlace {photo} />
         </div>
     {/await}
 </TraySlide>
+
+<style>
+    .tray {
+        height: auto;
+    }
+</style>
