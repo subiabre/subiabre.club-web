@@ -9,9 +9,7 @@ export interface Image {
         height: number,
         path: string
     }[],
-    portraits: [
-        string
-    ],
+    portraits: string[],
     metadata: {
         width: number,
         height: number,
@@ -19,4 +17,15 @@ export interface Image {
         type: string,
         exif: string[]
     }
+}
+
+export interface ImagePortrait {
+    id: number,
+    image: string,
+    crop: string,
+    person?: string,
+    x: number,
+    y: number,
+    width: number,
+    height: number
 }

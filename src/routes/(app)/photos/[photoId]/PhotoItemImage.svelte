@@ -2,6 +2,7 @@
     import { api } from "$lib/api";
     import type { Image } from "$lib/api/types/Image";
     import PhotoItemImageDescription from "./PhotoItemImageDescription.svelte";
+    import PhotoItemImagePortraits from "./PhotoItemImagePortraits.svelte";
 
     export let iri: string;
 
@@ -22,9 +23,7 @@
             <div class="padded overlay">
                 {#if image.portraits.length > 0}
                     <h5>Quién</h5>
-                    <p class="label">
-                        No se ha identificado ningún rostro en esta imagen.
-                    </p>
+                    <PhotoItemImagePortraits {image} />
                 {/if}
                 <p />
                 <h5>Descripción</h5>
