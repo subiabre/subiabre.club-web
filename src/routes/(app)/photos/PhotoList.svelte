@@ -10,3 +10,9 @@
         <PhotoListItem {photo} on:selection />
     {/each}
 </section>
+
+<style lang="scss">
+    section {
+        grid-auto-rows: 210px;
+    }
+</style>

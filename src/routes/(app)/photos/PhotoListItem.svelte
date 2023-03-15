@@ -20,7 +20,7 @@
 
 {#await cover then cover}
     <figure
-        class={cover.metadata.height > cover.metadata.width ? "is-tall" : ""}
+        class={cover.metadata.height - cover.metadata.width > 50 ? "is-tall" : ""}
         on:click={handleSelection}
         on:keydown={handleSelection}
     >
@@ -39,10 +39,10 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
-        border-radius: 5px;
+        border-radius: 1rem;
     }
 
     .is-tall {
-        column-span: 2;
+        grid-row: span 2;
     }
 </style>

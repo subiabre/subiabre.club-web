@@ -1,6 +1,5 @@
 <script lang="ts">
     import { api } from "$lib/api";
-    import { file } from "$lib/human/file";
     import type { Image } from "$lib/api/types/Image";
     import PhotoItemImageFormDescription from "./PhotoItemImageFormDescription.svelte";
 
@@ -21,3 +20,12 @@
         <h5>Quién</h5>
     </div>
 {/await}
+
+<style lang="scss">
+    figure {
+        width: 100%;
+
+        display: flex;
+        justify-content: center;
+    }
+</style>
