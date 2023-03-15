@@ -18,7 +18,9 @@
             ])
         )
         .then((photos) => {
-            return photos.map((photo) => photo.place?.country ?? "");
+            return photos
+                .filter((photo) => photo.place?.country)
+                .map((photo) => photo.place?.country);
         });
 
     $: regions = api.photos
@@ -33,7 +35,9 @@
             ])
         )
         .then((photos) => {
-            return photos.map((photo) => photo.place?.region ?? "");
+            return photos
+                .filter((photo) => photo.place?.region)
+                .map((photo) => photo.place?.region);
         });
 
     $: subregions = api.photos
@@ -48,7 +52,9 @@
             ])
         )
         .then((photos) => {
-            return photos.map((photo) => photo.place?.regionLevel2 ?? "");
+            return photos
+                .filter((photo) => photo.place?.regionLevel2)
+                .map((photo) => photo.place?.regionLevel2);
         });
 
     $: localities = api.photos
@@ -63,7 +69,9 @@
             ])
         )
         .then((photos) => {
-            return photos.map((photo) => photo.place?.locality ?? "");
+            return photos
+                .filter((photo) => photo.place?.locality)
+                .map((photo) => photo.place?.locality);
         });
 
     function rewind(type: string, name: string) {
@@ -88,7 +96,7 @@
 </script>
 
 <div>
-    <div class="grid-250">
+    <div class="grid-180">
         <div>
             <h5 class="label">País</h5>
             <ul>
@@ -96,7 +104,7 @@
                     {#each countries as country}
                         <FilterPlaceItem
                             type="place.country[]"
-                            name={country}
+                            name={country ?? ""}
                             on:add={add}
                             on:clear={clear}
                         />
@@ -112,7 +120,7 @@
                     {#each regions as region}
                         <FilterPlaceItem
                             type="place.region[]"
-                            name={region}
+                            name={region ?? ""}
                             on:add={add}
                             on:clear={clear}
                         />
@@ -128,7 +136,7 @@
                     {#each subregions as subregion}
                         <FilterPlaceItem
                             type="place.regionLevel2[]"
-                            name={subregion}
+                            name={subregion ?? ""}
                             on:add={add}
                             on:clear={clear}
                         />
@@ -144,7 +152,7 @@
                     {#each localities as locality}
                         <FilterPlaceItem
                             type="place.locality[]"
-                            name={locality}
+                            name={locality ?? ""}
                             on:add={add}
                             on:clear={clear}
                         />
@@ -163,7 +171,7 @@
 
 <style lang="scss">
     .breadcrumb {
-        margin: 1.5rem 0;
+        margin: 1.5rem 0 0 0;
         opacity: 0.5;
 
         &::before {
@@ -179,7 +187,8 @@
         }
     }
 
-    .grid-250 ul {
-        height: 5rem;
+    .grid-180 ul {
+        max-height: 6rem;
+        overflow-y: scroll;
     }
 </style>

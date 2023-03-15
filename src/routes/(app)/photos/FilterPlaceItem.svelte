@@ -5,6 +5,8 @@
     export let type: string;
     export let name: string;
 
+    $: console.log({ type, name });
+
     const dispatch = createEventDispatcher();
 
     $: isActive = !!$filters.find((param) => {

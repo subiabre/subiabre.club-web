@@ -16,10 +16,10 @@
             .put(photo.id, {
                 ...photo,
                 place: {
-                    country,
-                    region,
-                    regionLevel2,
-                    locality,
+                    country: country.length < 1 ? undefined : country,
+                    region: region.length < 1 ? undefined : region,
+                    regionLevel2: regionLevel2.length < 1 ? undefined : regionLevel2,
+                    locality : locality.length < 1 ? undefined : locality,
                 },
             })
             .then(() => {
