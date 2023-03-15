@@ -18,7 +18,7 @@
 </script>
 
 <textarea
-    placeholder="¿Qué se ve en esta imágen?"
+    placeholder="¿Qué hay en esta imagen?"
     bind:value={image.description}
     bind:this={textarea}
     on:input={handleChange}

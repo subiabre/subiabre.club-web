@@ -1,11 +1,11 @@
 <script lang="ts">
     import { api } from "$lib/api";
     import type { Image } from "$lib/api/types/Image";
-    import PhotoItemImageFormDescription from "./PhotoItemImageFormDescription.svelte";
+    import PhotoItemImageDescription from "./PhotoItemImageDescription.svelte";
 
     export let iri: string;
 
-    let description: PhotoItemImageFormDescription;
+    let description: PhotoItemImageDescription;
 
     $: image = ((): Promise<Image> =>
         api.call(iri).then((res) => res.json()))();
@@ -23,12 +23,12 @@
                 {#if image.portraits.length > 0}
                     <h5>Quién</h5>
                     <p class="label">
-                        No se ha identificado ningún rostro en esta imágen.
+                        No se ha identificado ningún rostro en esta imagen.
                     </p>
                 {/if}
                 <p />
                 <h5>Descripción</h5>
-                <PhotoItemImageFormDescription {image} bind:this={description} />
+                <PhotoItemImageDescription {image} bind:this={description} />
             </div>
         </figure>
     </div>
