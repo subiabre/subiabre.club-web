@@ -6,6 +6,7 @@
     import FilterDate from "./FilterDate.svelte";
     import PhotoList from "./PhotoList.svelte";
     import FilterPlace from "./FilterPlace.svelte";
+    import FilterPeople from "./FilterPeople.svelte";
 
     $: photos = api.photos.getCollection(
         new URLSearchParams([
@@ -33,6 +34,7 @@
     </div>
     <div class="padded">
         <h2>Quién</h2>
+        <FilterPeople />
     </div>
     <div class="padded">
         <h2>Cómo</h2>
