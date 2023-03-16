@@ -1,21 +1,27 @@
 <script lang="ts">
     import { api } from "$lib/api";
     import type { ImagePortrait } from "$lib/api/types/Image";
-    import PhotoItemImagePerson from "./PhotoItemImagePerson.svelte";
 
     export let portrait: ImagePortrait;
 
     let person =
         portrait.person && api.call(portrait.person).then((res) => res.json());
+
+    function handleSelection() {
+        alert("modal");
+    }
 </script>
 
-<li>
+<li on:click={handleSelection} on:keydown={handleSelection}>
     <img
         alt="Recorte de una cara identificada en la foto"
         src={portrait.crop}
     />
     {#await person then person}
-        <PhotoItemImagePerson {person} />
+        <div>
+            <p>{person?.familyName ?? ""}</p>
+            <p>{person?.givenName ?? ""}</p>
+        </div>
     {/await}
 </li>
 
@@ -26,12 +32,22 @@
 
         flex-shrink: 0;
 
+        &:hover {
+            cursor: pointer;
+        }
+
         img {
             width: auto;
             height: 3rem;
 
             border-radius: 100%;
             border: 1px solid $color-background;
+        }
+
+        div {
+            p {
+                margin: 0 0.5em;
+            }
         }
     }
 </style>

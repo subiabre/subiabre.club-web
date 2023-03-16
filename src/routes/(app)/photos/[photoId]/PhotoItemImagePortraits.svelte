@@ -1,7 +1,7 @@
 <script lang="ts">
     import { api } from "$lib/api";
     import type { Image } from "$lib/api/types/Image";
-    import PhotoItemImagePortraitsItem from "./PhotoItemImagePortraitsItem.svelte";
+    import PortraitList from "./PortraitList.svelte";
 
     export let image: Image;
 
@@ -14,9 +14,7 @@
 
 <ul>
     {#await portraits then portraits}
-        {#each portraits as portrait}
-            <PhotoItemImagePortraitsItem {portrait} />
-        {/each}
+        <PortraitList {portraits} />
     {/await}
 </ul>
 
