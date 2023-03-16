@@ -12,10 +12,20 @@
     );
 </script>
 
-<ul class="grid-180">
+<ul>
     {#await portraits then portraits}
         {#each portraits as portrait}
             <PhotoItemImagePortraitsItem {portrait} />
         {/each}
     {/await}
 </ul>
+
+<style lang="scss">
+    ul {
+        margin: 1.5rem 0;
+
+        display: flex;
+        gap: 1rem;
+        overflow-y: scroll;
+    }
+</style>

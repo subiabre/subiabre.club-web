@@ -24,12 +24,14 @@
         display: flex;
         align-items: center;
 
+        flex-shrink: 0;
+
         img {
             width: auto;
             height: 3rem;
-            padding: 2px;
 
             border-radius: 100%;
+            border: 1px solid $color-background;
         }
     }
 </style>

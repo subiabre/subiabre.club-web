@@ -19,15 +19,14 @@
     }
 </script>
 
-<form on:submit={handleSubmit}>
-    <p><input type="text" bind:value={familyName} placeholder="Apellido" /></p>
-    <p><input type="text" bind:value={givenName} placeholder="Nombre" /></p>
-</form>
+<div on:submit={handleSubmit}>
+    <p>{familyName}</p>
+    <p>{givenName}</p>
+</div>
 
 <style lang="scss">
-    form {
-        p,
-        input {
+    div {
+        p {
             margin: 0 0.5em;
         }
     }

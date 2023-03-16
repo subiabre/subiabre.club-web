@@ -51,6 +51,7 @@
 
         .overlay {
             width: 100%;
+            padding: 1.5em;
             position: absolute;
             bottom: 0;
 
