@@ -19,7 +19,7 @@ export class PeopleClient {
             method: 'POST'
         });
 
-        if (res.status === 200) {
+        if (res.status === 201) {
             return res.json();
         }
 

@@ -19,6 +19,7 @@ textarea {
     background: transparent;
     box-shadow: none;
     font-size: inherit;
+    font-family: $font-family-body;
 
     &:focus,
     &:focus-visible {

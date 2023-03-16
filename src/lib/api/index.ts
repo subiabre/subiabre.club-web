@@ -1,5 +1,6 @@
 import { AuthClient } from "./client/AuthClient";
 import { Client } from "./client/Client";
+import { ImagePortraitsClient } from "./client/ImagePotraitsClient";
 import { ImagesClient } from "./client/ImagesClient";
 import { PeopleClient } from "./client/PeopleClient";
 import { PhotosClient } from "./client/PhotosClients";
@@ -12,6 +13,7 @@ class ApiClient {
 
     public readonly auth: AuthClient;
     public readonly images: ImagesClient;
+    public readonly imagePortraits: ImagePortraitsClient;
     public readonly people: PeopleClient;
     public readonly photos: PhotosClient;
     public readonly users: UsersClient;
@@ -24,6 +26,7 @@ class ApiClient {
         this.client = client;
         this.auth = new AuthClient(client);
         this.images = new ImagesClient(client);
+        this.imagePortraits = new ImagePortraitsClient(client);
         this.people = new PeopleClient(client);
         this.photos = new PhotosClient(client);
         this.users = new UsersClient(client);

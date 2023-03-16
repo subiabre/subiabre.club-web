@@ -1,7 +1,9 @@
 <script lang="ts">
     import { api } from "$lib/api";
-    import type { Image } from "$lib/api/types/Image";
+    import { page } from "$app/stores";
+    import { goto } from "$app/navigation";
     import PortraitList from "./PortraitList.svelte";
+    import type { Image, ImagePortrait } from "$lib/api/types/Image";
 
     export let image: Image;
 
@@ -10,20 +12,21 @@
             api.call(portrait).then((res) => res.json())
         )
     );
+
+    function handleUpdate(event: CustomEvent) {
+        const portrait: ImagePortrait = event.detail.portrait;
+
+        if (portrait.person === "new") {
+            goto(`/photos/${$page.params.photoId}/images/${image.id}/portraits/${portrait.id}#portrait`);
+            return;
+        }
+
+        api.imagePortraits.put(image.id, portrait.id, {
+            person: portrait.person,
+        });
+    }
 </script>
 
-<ul>
-    {#await portraits then portraits}
-        <PortraitList {portraits} />
-    {/await}
-</ul>
-
-<style lang="scss">
-    ul {
-        margin: 1.5rem 0;
-
-        display: flex;
-        gap: 1rem;
-        overflow-y: scroll;
-    }
-</style>
+{#await portraits then portraits}
+    <PortraitList {portraits} on:update={handleUpdate} />
+{/await}

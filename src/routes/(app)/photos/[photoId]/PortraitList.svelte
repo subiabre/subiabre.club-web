@@ -12,6 +12,18 @@
     });
 </script>
 
-{#each portraits as portrait}
-    <PortraitListItem {portrait} />
-{/each}
+<ul>
+    {#each portraits as portrait}
+        <PortraitListItem {portrait} on:update />
+    {/each}
+</ul>
+
+<style lang="scss">
+    ul {
+        margin: 1.5rem 0;
+
+        display: flex;
+        gap: 1rem;
+        overflow-y: scroll;
+    }
+</style>
