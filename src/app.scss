@@ -2,8 +2,9 @@
 
 @import "./styles/minireset.min.css";
 
+@import "../node_modules/carbon-components-svelte/css/g100.css";
+
 @import "./styles/font.scss";
-@import "./styles/form.scss";
 @import "./styles/color.scss";
 @import "./styles/layout.scss";
 
