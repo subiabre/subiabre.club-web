@@ -1,8 +1,8 @@
 <script lang="ts">
     import { api } from "$lib/api";
+    import { filters } from "$lib/stores";
     import type { Person } from "$lib/api/types/Person";
     import type { ImagePortrait } from "$lib/api/types/Image";
-    import { filters } from "$lib/stores";
 
     export let person: Person;
 
@@ -58,7 +58,10 @@
 >
     {#await portrait then portrait}
         <figure>
-            <img alt="Retrato de una persona" src={portrait.crop} />
+            <img
+                alt="Retrato de {person.familyName}, {person.givenName}."
+                src={portrait.crop}
+            />
         </figure>
     {/await}
     <div>
@@ -72,11 +75,15 @@
         display: flex;
         align-items: center;
 
-        opacity: 0.5;
+        opacity: 0.4;
 
         &:hover,
         &.is-active {
             opacity: 1;
+        }
+
+        &:hover {
+            color: $color-success;
         }
 
         img {
