@@ -1,6 +1,6 @@
 <script lang="ts">
     import { api } from "$lib/api";
-    import { filters } from "$lib/stores";
+    import { createEventDispatcher } from "svelte";
     import type { Person } from "$lib/api/types/Person";
     import type { ImagePortrait } from "$lib/api/types/Image";
 
@@ -16,35 +16,13 @@
         )
         .then((res) => res.json());
 
+    const dispatch = createEventDispatcher();
+
     function handleSelection() {
         if (isActive) {
-            $filters = $filters.filter((param) => {
-                if (!param[0].startsWith("images.portraits.person")) {
-                    return true;
-                }
-
-                if (
-                    param[0] === "images.portraits.person.familyName" &&
-                    param[1] !== person.familyName
-                ) {
-                    return true;
-                }
-
-                if (
-                    param[0] === "images.portraits.person.givenName" &&
-                    param[1] !== person.givenName
-                ) {
-                    return true;
-                }
-
-                return false;
-            });
+            dispatch("clear", { person });
         } else {
-            $filters = [
-                ...$filters,
-                ["images.portraits.person.familyName", person.familyName],
-                ["images.portraits.person.givenName", person.givenName],
-            ];
+            dispatch("select", { person })
         }
 
         isActive = !isActive;
