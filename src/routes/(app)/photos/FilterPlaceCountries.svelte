@@ -18,9 +18,9 @@
 
     function handleSelect(event: CustomEvent) {
         $filters = [
-            ...$filters.filter((param) => param[0] !== "place.country"),
+            ...$filters.filter((param) => param[0] !== "place.country[]"),
             ...event.detail.selected.map((selected: { text: string }) => {
-                return ["place.country", selected.text];
+                return ["place.country[]", selected.text];
             }),
         ];
     }

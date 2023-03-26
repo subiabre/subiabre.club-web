@@ -18,9 +18,9 @@
 
     function handleSelect(event: CustomEvent) {
         $filters = [
-            ...$filters.filter((param) => param[0] !== "place.locality"),
+            ...$filters.filter((param) => param[0] !== "place.locality[]"),
             ...event.detail.selected.map((selected: { text: string }) => {
-                return ["place.locality", selected.text];
+                return ["place.locality[]", selected.text];
             }),
         ];
     }
