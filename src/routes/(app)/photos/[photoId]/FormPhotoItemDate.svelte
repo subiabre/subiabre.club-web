@@ -36,7 +36,7 @@
     <h5>Fecha</h5>
     <p>
         <label>
-            <h6>Fecha mínima</h6>
+            <h6>Después de</h6>
             <input type="date" bind:value={dateMin} disabled={hasDateExact} />
         </label>
         <label>
@@ -46,7 +46,7 @@
     </p>
     <p>
         <label>
-            <h6>Fecha máxima/exacta</h6>
+            <h6>Antes de/exactamente</h6>
             <input type="date" bind:value={dateMax} />
         </label>
     </p>
