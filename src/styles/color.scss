@@ -24,6 +24,13 @@
     @include color($color-danger);
 }
 
+button.color-danger {
+    &:hover {
+        border: $color-danger;
+        background-color: $color-danger;
+    }
+}
+
 .color-warning {
     @include color($color-warning);
 }

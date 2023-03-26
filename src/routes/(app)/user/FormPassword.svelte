@@ -2,6 +2,7 @@
     import { api } from "$lib/api";
     import { auth } from "$lib/stores";
     import { goto } from "$app/navigation";
+    import { Button, Form, PasswordInput } from "carbon-components-svelte";
 
     let passwordOld: string;
     let passwordOldError = false;
@@ -34,43 +35,31 @@
     }
 </script>
 
-<form on:submit={handleSubmit}>
-    <p class={passwordOldError ? "is-visible" : "is-hidden"}>
-        <label for="input-password-current" class="color-danger">
-            <h5>Contraseña incorrecta</h5>
-        </label>
-    </p>
+<Form on:submit={handleSubmit}>
     <p>
-        <label for="input-password-current">
-            <h6>Contraseña actual</h6>
-            <input
-                id="input-password-current"
-                type="password"
-                placeholder="******"
-                bind:value={passwordOld}
-            />
-        </label>
+        <PasswordInput
+            labelText="Contraseña antigua"
+            placeholder="******"
+            invalid={passwordOldError}
+            invalidText="Contraseña incorrecta"
+            bind:value={passwordOld}
+        />
     </p>
 
-    <p class={passwordNewError ? "is-visible" : "is-hidden"}>
-        <label for="input-password-current" class="color-danger">
-            <h5>Nueva contraseña inválida</h5>
-        </label>
-    </p>
     <p>
-        <label for="input-password-new">
-            <h6>Contraseña nueva</h6>
-            <input
-                id="input-password-new"
-                type="password"
-                placeholder="*****"
-                bind:value={passwordNew}
-            />
-        </label>
+        <PasswordInput
+            labelText="Contraseña nueva"
+            placeholder="******"
+            invalid={passwordNewError}
+            invalidText="Nueva contraseña inválida"
+            bind:value={passwordNew}
+        />
     </p>
 
     <p>Esta acción destruirá todas tus sesiones actuales.</p>
     <p>
-        <button class="color-success">Actualizar contraseña</button>
+        <Button type="submit" kind="tertiary" class="color-success">
+            Actualizar contraseña
+        </Button>
     </p>
-</form>
+</Form>

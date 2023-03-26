@@ -1,6 +1,7 @@
 <script lang="ts">
     import { api } from "$lib/api";
     import { auth } from "$lib/stores";
+    import { Button, Form } from "carbon-components-svelte";
     import { createEventDispatcher } from "svelte";
 
     const dispatch = createEventDispatcher();
@@ -18,7 +19,7 @@
     }
 </script>
 
-<form on:submit={handleSubmit}>
+<Form on:submit={handleSubmit}>
     <p />
     <p class="color-warning">
         Las llaves otorgan acceso a tu cuenta igual que tu usuario y contraseña.
@@ -39,6 +40,6 @@
         </label>
     </p>
     <p>
-        <button class="color-success">Crear llave</button>
+        <Button type="submit" kind="tertiary" class="color-success">Crear llave</Button>
     </p>
-</form>
+</Form>

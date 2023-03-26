@@ -5,6 +5,7 @@
     import { auth } from "$lib/stores";
     import { createEventDispatcher } from "svelte";
     import type { UserSession } from "$lib/api/types/User";
+    import { Button, Form } from "carbon-components-svelte";
 
     export let session: UserSession;
 
@@ -21,7 +22,7 @@
     }
 </script>
 
-<form on:submit={handleSubmit}>
+<Form on:submit={handleSubmit}>
     <h2>
         Sesión #{session.id}
     </h2>
@@ -34,6 +35,6 @@
     <p>Creada <span class="font-weight-medium">{dateCreated}</span></p>
     <p>Caduca <span class="font-weight-medium">{dateExpires}</span></p>
     <p>
-        <button class="color-danger">Destruir</button>
+        <Button type="submit" kind="danger-tertiary" class="color-danger">Destruir</Button>
     </p>
-</form>
+</Form>

@@ -6,6 +6,7 @@
     import { shorten } from "$lib/human/shorten";
     import { createEventDispatcher, onMount } from "svelte";
     import type { UserKey } from "$lib/api/types/User";
+    import { Button, Form } from "carbon-components-svelte";
 
     export let key: UserKey;
 
@@ -39,18 +40,20 @@
     });
 </script>
 
-<form on:submit={handleSubmit}>
+<Form on:submit={handleSubmit}>
     <h2>Llave #{key.id}</h2>
     <p>{value}</p>
     <p>Creada <span class="font-weight-medium">{dateCreated}</span></p>
     <p>Caduca <span class="font-weight-medium">{dateExpires}</span></p>
     <p><canvas bind:this={canvas} /></p>
     <p>
-        {#if keyCopy}
-            <span class="button color-success">Enlace copiado</span>
-        {:else}
-            <button type="button" on:click={handleCopy}>Copiar enlace</button>
-        {/if}
-        <button type="submit" class="color-danger">Destruir</button>
+        <Button type="button" kind="tertiary" on:click={handleCopy}>
+            {#if keyCopy}
+                Enlace copiado
+            {:else}
+                Copiar enlace
+            {/if}
+        </Button>
+        <Button type="submit" kind="danger-tertiary" class="color-danger">Destruir</Button>
     </p>
-</form>
+</Form>
