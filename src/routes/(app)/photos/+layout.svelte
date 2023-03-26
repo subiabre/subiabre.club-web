@@ -7,6 +7,7 @@
     import PhotoList from "./PhotoList.svelte";
     import FilterPlace from "./FilterPlace.svelte";
     import FilterPeople from "./FilterPeople.svelte";
+    import FilterDescription from "./FilterDescription.svelte";
 
     $: photos = api.photos.getCollection(
         new URLSearchParams([
@@ -38,9 +39,7 @@
     </div>
     <div class="padded">
         <h2>Cómo</h2>
-        <form>
-            <input type="text" placeholder="..." />
-        </form>
+        <FilterDescription />
     </div>
 </TraySlide>
 <TraySlide id="results">
