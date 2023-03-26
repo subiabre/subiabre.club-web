@@ -1,6 +1,7 @@
 <script lang="ts">
     import { api } from "$lib/api";
     import type { Photo } from "$lib/api/types/Photo";
+    import { Button } from "carbon-components-svelte";
 
     export let photo: Photo;
 
@@ -18,8 +19,9 @@
                 place: {
                     country: country.length < 1 ? undefined : country,
                     region: region.length < 1 ? undefined : region,
-                    regionLevel2: regionLevel2.length < 1 ? undefined : regionLevel2,
-                    locality : locality.length < 1 ? undefined : locality,
+                    regionLevel2:
+                        regionLevel2.length < 1 ? undefined : regionLevel2,
+                    locality: locality.length < 1 ? undefined : locality,
                 },
             })
             .then(() => {
@@ -71,9 +73,13 @@
     </div>
     <p>
         {#if placeUpdated}
-            <span class="button">Lugar actualizado</span>
+            <Button disabled>
+                Lugar actualizado
+            </Button>
         {:else}
-            <button class="color-success">Actualizar lugar</button>
+            <Button type="submit" kind="tertiary" class="color-success">
+                Actualizar lugar
+            </Button>
         {/if}
     </p>
 </form>

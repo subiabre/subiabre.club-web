@@ -47,13 +47,17 @@
     <p>Caduca <span class="font-weight-medium">{dateExpires}</span></p>
     <p><canvas bind:this={canvas} /></p>
     <p>
-        <Button type="button" kind="tertiary" on:click={handleCopy}>
-            {#if keyCopy}
+        {#if keyCopy}
+            <Button disabled>
                 Enlace copiado
-            {:else}
+            </Button>
+        {:else}
+            <Button type="button" kind="tertiary" on:click={handleCopy}>
                 Copiar enlace
-            {/if}
+            </Button>
+        {/if}
+        <Button type="submit" kind="danger-tertiary" class="color-danger">
+            Destruir
         </Button>
-        <Button type="submit" kind="danger-tertiary" class="color-danger">Destruir</Button>
     </p>
 </Form>

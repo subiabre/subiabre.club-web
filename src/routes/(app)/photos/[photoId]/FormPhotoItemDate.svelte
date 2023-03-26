@@ -2,6 +2,7 @@
     import { time } from "$lib/human/time";
     import type { Photo } from "$lib/api/types/Photo";
     import { api } from "$lib/api";
+    import { Button, ToastNotification } from "carbon-components-svelte";
 
     export let photo: Photo;
 
@@ -52,9 +53,9 @@
     </p>
     <p>
         {#if dateUpdated}
-            <span class="button">Fecha actualizada</span>
+            <Button disabled>Fecha actualizada</Button>
         {:else}
-            <button class="color-success">Actualizar fecha</button>
+            <Button type="submit" kind="tertiary" class="color-success">Actualizar fecha</Button>
         {/if}
     </p>
 </form>
