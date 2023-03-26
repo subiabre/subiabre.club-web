@@ -20,20 +20,27 @@
     function handleChange(event: any) {
         const values = event.detail.values;
 
-        filters.update((params) => {
-            return [
-                ...params.filter((param) => param[0] !== "date[from]"),
-                ...params.filter((param) => param[0] !== "date[to]"),
-                [
-                    "date[from]",
-                    new Date(values[0], 0, 2).toISOString().split("T")[0],
-                ],
-                [
-                    "date[to]",
-                    new Date(values[1], 11, 32).toISOString().split("T")[0],
-                ],
-            ];
-        });
+        $filters = [
+            ...$filters.filter((param) => {
+                if (param[0] === "date[from]") {
+                    return false;
+                }
+
+                if (param[0] === "date[to]") {
+                    return false;
+                }
+
+                return true;
+            }),
+            [
+                "date[from]",
+                new Date(values[0], 0, 2).toISOString().split("T")[0],
+            ],
+            [
+                "date[to]",
+                new Date(values[1], 11, 32).toISOString().split("T")[0],
+            ]
+        ]
     }
 </script>
 

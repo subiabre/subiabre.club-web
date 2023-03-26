@@ -10,32 +10,38 @@
 
     $: console.log($filters);
 
-    $: $filters = [
-        ...$filters.filter(
-            (param) => !param[0].startsWith("images.portraits.person")
-        ),
-        ...selected.map((person) => {
-            return [
-                "images.portraits.person.familyName[]",
-                person.familyName,
-            ] as [string, string];
-        }),
-        ...selected.map((person) => {
-            return [
-                "images.portraits.person.givenName[]",
-                person.givenName,
-            ] as [string, string];
-        }),
-    ];
+    function updateFilters(people: Person[]) {
+        $filters = [
+            ...$filters.filter(
+                (param) => !param[0].startsWith("images.portraits.person")
+            ),
+            ...people.map((person) => {
+                return [
+                    "images.portraits.person.familyName[]",
+                    person.familyName,
+                ] as [string, string];
+            }),
+            ...people.map((person) => {
+                return [
+                    "images.portraits.person.givenName[]",
+                    person.givenName,
+                ] as [string, string];
+            }),
+        ];
+    }
 
     function handleClear(event: CustomEvent) {
         selected = selected.filter(
             (person) => person.id !== event.detail.person.id
         );
+
+        updateFilters(selected);
     }
 
     function handleSelect(event: CustomEvent) {
         selected = [...selected, event.detail.person];
+
+        updateFilters(selected);
     }
 </script>
 
