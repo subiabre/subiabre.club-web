@@ -82,3 +82,9 @@
         {/if}
     </p>
 </form>
+
+<style lang="scss">
+    input {
+        width: 100%;
+    }
+</style>

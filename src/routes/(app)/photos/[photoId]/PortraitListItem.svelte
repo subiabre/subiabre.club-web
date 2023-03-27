@@ -80,6 +80,7 @@
         }
 
         :global(.bx--modal) {
+            width: 100%;
             background: transparent;
         }
     }
