@@ -49,6 +49,9 @@
     <audio controls={controls} bind:this={slides[3]}>
         <source src="/sound/slide_04.ogg" type="audio/ogg" />
     </audio>
+    <audio controls={controls} bind:this={slides[4]}>
+        <source src="/sound/slide_05.ogg" type="audio/ogg" />
+    </audio>
     
     <audio controls={controls} bind:this={clacks[0]}>
         <source src="/sound/clack_01.ogg" type="audio/ogg" />
