@@ -61,5 +61,7 @@
     ul {
         display: flex;
         gap: 1em;
+
+        overflow-x: scroll;
     }
 </style>
