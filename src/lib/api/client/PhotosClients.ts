@@ -23,7 +23,18 @@ export class PhotosClient {
         throw error(res.status, res.statusText);
     }
 
-    public async put(photoId: number, body: Photo): Promise<Photo> {
+    public async put(photoId: number, body: {
+        date?: {
+            min?: string,
+            max: string
+        },
+        place?: {
+            country?: string,
+            region?: string,
+            regionLevel2?: string,
+            locality?: string
+        }
+    }): Promise<Photo> {
         const res = await this.client.call(`/api/photos/${photoId}`, {
             body: JSON.stringify(body),
             method: 'PUT'

@@ -18,7 +18,6 @@
     function handleSubmit() {
         api.photos
             .put(photo.id, {
-                ...photo,
                 date: {
                     min: dateMin,
                     max: dateMax,

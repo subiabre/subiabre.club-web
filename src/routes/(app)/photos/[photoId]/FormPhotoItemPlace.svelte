@@ -15,7 +15,6 @@
     function handleSubmit() {
         api.photos
             .put(photo.id, {
-                ...photo,
                 place: {
                     country: country.length < 1 ? undefined : country,
                     region: region.length < 1 ? undefined : region,
