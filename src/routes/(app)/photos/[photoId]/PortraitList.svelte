@@ -24,6 +24,7 @@
 
         display: flex;
         gap: 1rem;
-        overflow-y: scroll;
+
+        overflow-x: scroll;
     }
 </style>

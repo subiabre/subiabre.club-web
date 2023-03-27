@@ -25,4 +25,14 @@ export class PeopleClient {
 
         throw error(res.status, res.statusText);
     }
+
+    public async get(personId: number): Promise<Person> {
+        const res = await this.client.call(`/api/people/${personId}`);
+
+        if (res.status === 200) {
+            return res.json();
+        }
+
+        throw error(res.status, res.statusText);
+    }
 }
