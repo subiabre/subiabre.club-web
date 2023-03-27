@@ -2,6 +2,8 @@
     import { api } from "$lib/api";
     import { createEventDispatcher } from "svelte";
     import type { ImagePortrait } from "$lib/api/types/Image";
+    import { Modal } from "carbon-components-svelte";
+    import FormPhotoItemSubject from "./FormPhotoItemSubject.svelte";
 
     export let portrait: ImagePortrait;
 
@@ -12,10 +14,32 @@
 
     let people = api.people.getCollection();
 
+    let openModal = false;
+
     function handleChange(event: any) {
+        const value = event.target.value;
+
+        if (value === "new") {
+            openModal = true;
+            return;
+        }
+
         dispatch("update", {
-            portrait: { ...portrait, person: event.target.value },
+            portrait: { ...portrait, person: value },
         });
+    }
+
+    function handleSubmit(event: CustomEvent) {
+        dispatch("update", {
+            portrait: {
+                ...portrait,
+                person: `/api/people/${event.detail.person.id}`,
+            },
+        });
+
+        people = api.people.getCollection();
+
+        openModal = false;
     }
 </script>
 
@@ -25,6 +49,20 @@
         src={portrait.crop}
     />
     {#await person then subject}
+        <Modal
+            hasForm
+            passiveModal
+            modalHeading="Añadir sujeto"
+            bind:open={openModal}
+        >
+            <h6>Retrato #{portrait.id}</h6>
+            <p>
+                <figure>
+                    <img alt="Retrato de una persona" src={portrait.crop} />
+                </figure>
+            </p>
+            <FormPhotoItemSubject on:submit={handleSubmit} />
+        </Modal>
         {#await people then people}
             <select on:change={handleChange}>
                 <option>Desconocido</option>
@@ -64,6 +102,10 @@
 
         select {
             margin: 0 0.5em;
+        }
+
+        :global(.bx--modal) {
+            background: transparent;
         }
     }
 </style>
