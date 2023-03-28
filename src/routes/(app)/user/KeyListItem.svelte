@@ -15,7 +15,7 @@
     let keyCopy = false;
     let canvas: HTMLCanvasElement;
 
-    $: url = `${window.location.origin}/login?key=${key.value}`;
+    $: url = `${window.location.origin}/login/${key.value}`;
     $: value = shorten.hyphened(key.value, 15);
     $: dateCreated = time.ago(key.dateCreated);
     $: dateExpires = key.dateExpires ? time.ago(key.dateExpires) : "Nunca";
