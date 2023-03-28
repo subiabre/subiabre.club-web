@@ -75,7 +75,7 @@
         --range-range: var(--range-handle-focus);
         --range-float-inactive: var(--range-handle-inactive);
         --range-float: var(--range-handle-focus);
-        --range-float-text: white;
+        --range-float-text: #{$color-background};
 
         --range-pip: #{darken($color: $color-body, $amount: 75)};
         --range-pip-active: #{$color-body};
