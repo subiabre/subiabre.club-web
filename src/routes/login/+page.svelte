@@ -4,19 +4,17 @@
     import { goto } from "$app/navigation";
     import Tray from "$lib/layout/Tray.svelte";
     import TraySlide from "$lib/layout/TraySlide.svelte";
+    import {
+        Button,
+        Form,
+        PasswordInput,
+        TextInput,
+    } from "carbon-components-svelte";
 
     let username: string;
     let password: string;
-    let passwordSlide: TraySlide;
-    let passwordInput: HTMLInputElement;
 
     let authError = false;
-
-    function handleUsername(event: SubmitEvent) {
-        event.preventDefault();
-        passwordSlide.focus();
-        passwordInput.focus();
-    }
 
     async function handleSubmit() {
         api.auth
@@ -38,7 +36,7 @@
 </script>
 
 <Tray>
-    <TraySlide id="login-password" bind:this={passwordSlide}>
+    <TraySlide id="login">
         <div class="padded">
             <h1>Hola{username ? `, ${username}` : ""}.</h1>
             <p>
@@ -46,40 +44,37 @@
                 que te invitó.
             </p>
 
-            <form on:submit={handleSubmit}>
+            <Form on:submit={handleSubmit}>
                 <p class={authError ? "is-visible" : "is-hidden"}>
                     <label for="input-password" class="color-danger">
                         <h5>Usuario o contraseña incorrectos</h5>
                     </label>
                 </p>
                 <p>
-                    <label>
-                        <h6>Nombre</h6>
-                        <input
-                            id="input-username"
-                            type="text"
-                            placeholder="Larry"
-                            bind:value={username}
-                        />
-                    </label>
+                    <TextInput
+                        labelText="Usuario"
+                        bind:value={username}
+                        bind:invalid={authError}
+                    />
                 </p>
                 <p>
-                    <label>
-                        <h6>Contraseña</h6>
-                        <input
-                            id="input-password"
-                            type="password"
-                            placeholder="Tu contraseña"
-                            autocomplete="current-password"
-                            bind:value={password}
-                            bind:this={passwordInput}
-                        />
-                    </label>
+                    <PasswordInput
+                        labelText="Contraseña"
+                        bind:value={password}
+                        bind:invalid={authError}
+                    />
                 </p>
                 <p>
-                    <button>Confirmar</button>
+                    <Button type="submit" kind="tertiary">Entrar</Button>
                 </p>
-            </form>
+            </Form>
         </div>
     </TraySlide>
 </Tray>
+
+<style lang="scss">
+    p {
+        width: 90%;
+        max-width: 1000px;
+    }
+</style>
