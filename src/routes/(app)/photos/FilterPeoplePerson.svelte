@@ -1,5 +1,6 @@
 <script lang="ts">
     import { api } from "$lib/api";
+    import { dice } from "$lib/human/dice";
     import { createEventDispatcher } from "svelte";
     import type { Person } from "$lib/api/types/Person";
     import type { ImagePortrait } from "$lib/api/types/Image";
@@ -9,11 +10,7 @@
     let isActive = false;
 
     let portrait: Promise<ImagePortrait> = api
-        .call(
-            person.portraits[
-                Math.floor(Math.random() * person.portraits.length)
-            ]
-        )
+        .call(dice.item(person.portraits))
         .then((res) => res.json());
 
     const dispatch = createEventDispatcher();
