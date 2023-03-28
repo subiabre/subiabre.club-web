@@ -5,9 +5,9 @@
 
     let slide: HTMLElement;
 
-    $: $page.url.pathname && track();
-
     function track() {
+        if (!document) return;
+
         document.querySelectorAll(".current").forEach((current) => {
             current.classList.remove("current");
         });
@@ -23,9 +23,7 @@
     }
 
     onMount(() => {
-        document
-            .querySelector(`[href='${$page.url.pathname}']`)
-            ?.classList.add("current");
+        track();
     });
 </script>
 
