@@ -4,14 +4,32 @@
 
     let value: string;
 
-    function handleSubmit(event: SubmitEvent) {
+    function handleSearch() {
+        const search = value.trim();
+
+        if (!search) {
+            handleClear();
+            return;
+        }
+
         $filters = [
-            ...$filters.filter(param => param[0] !== "images.description"),
-            ["images.description", value]
-        ]
+            ...$filters.filter((param) => param[0] !== "images.description"),
+            ["images.description", value],
+        ];
+    }
+
+    function handleClear() {
+        $filters = $filters.filter(
+            (param) => param[0] !== "images.description"
+        );
     }
 </script>
 
-<Form on:submit={handleSubmit}>
-    <Search placeholder="Describe la imagen que estás buscando" bind:value />
+<Form>
+    <Search
+        placeholder="Describe la imagen que estás buscando"
+        on:input={handleSearch}
+        on:clear={handleClear}
+        bind:value
+    />
 </Form>
