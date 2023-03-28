@@ -5,6 +5,8 @@
 
     let slide: HTMLElement;
 
+    $: $page.url.pathname && track();
+
     function track() {
         if (!document) return;
 
