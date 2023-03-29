@@ -60,6 +60,7 @@
                 <p>
                     <PasswordInput
                         labelText="Contraseña"
+                        tooltipPosition="left"
                         bind:value={password}
                         bind:invalid={authError}
                     />
@@ -71,10 +72,3 @@
         </div>
     </TraySlide>
 </Tray>
-
-<style lang="scss">
-    p {
-        width: 90%;
-        max-width: 1000px;
-    }
-</style>

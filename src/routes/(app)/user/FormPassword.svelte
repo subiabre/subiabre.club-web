@@ -42,6 +42,7 @@
             placeholder="******"
             invalid={passwordOldError}
             invalidText="Contraseña incorrecta"
+            tooltipPosition="left"
             bind:value={passwordOld}
         />
     </p>
@@ -52,6 +53,7 @@
             placeholder="******"
             invalid={passwordNewError}
             invalidText="Nueva contraseña inválida"
+            tooltipPosition="left"
             bind:value={passwordNew}
         />
     </p>
