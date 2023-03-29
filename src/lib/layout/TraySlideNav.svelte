@@ -15,7 +15,7 @@
         });
 
         document
-            .querySelector(`[href='${$page.url.pathname}']`)
+            .querySelector(`[href^='${$page.url.pathname}']`)
             ?.classList.add("current");
         document.querySelector("#nav")?.classList.add("current");
     }
@@ -42,7 +42,7 @@
     <ul class="padded menu">
         <li class="page">
             <a
-                href="/photos"
+                href="/photos#filters"
                 on:mouseenter={() =>
                     "/photos" !== $page.url.pathname && sound.playClack()}
             >
@@ -69,7 +69,7 @@
         </li>
         <li class="page">
             <a
-                href="/user"
+                href="/user#config"
                 on:mouseenter={() =>
                     "/user" !== $page.url.pathname && sound.playClack()}
                 ><h2>Usuario</h2></a
