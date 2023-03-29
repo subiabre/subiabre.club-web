@@ -17,7 +17,7 @@
     );
 
     function handleSelection(event: any) {
-        goto(`/photos/${event.detail.photo.id}`, { keepFocus: true });
+        goto(`/photos/${event.detail.photo.id}#item`, { keepFocus: true });
     }
 </script>
 
