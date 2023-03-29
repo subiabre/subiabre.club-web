@@ -28,7 +28,7 @@
                 <PhotoItemImage iri={image} />
             {/each}
         </div>
-        <div class="padded grid-360">
+        <div class="padded grid-180">
             <FormPhotoItemDate {photo} />
             <FormPhotoItemPlace {photo} />
         </div>

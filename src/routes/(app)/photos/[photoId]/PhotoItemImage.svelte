@@ -10,15 +10,11 @@
 
     $: image = ((): Promise<Image> =>
         api.call(iri).then((res) => res.json()))();
-
-    function showOverlay() {
-        description.focus();
-    }
 </script>
 
 {#await image then image}
     <div>
-        <figure on:touchstart={showOverlay}>
+        <figure>
             <img alt={image.description} src={image.path} />
             <div class="padded overlay">
                 {#if image.portraits.length > 0}
