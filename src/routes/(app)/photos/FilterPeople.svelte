@@ -8,8 +8,6 @@
 
     let selected: Person[] = [];
 
-    $: console.log($filters);
-
     function updateFilters(people: Person[]) {
         $filters = [
             ...$filters.filter(
