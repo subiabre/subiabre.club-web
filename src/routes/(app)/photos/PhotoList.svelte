@@ -14,14 +14,34 @@
     function handleSelection(event: any) {
         goto(`/photos/${event.detail.photo.id}#item`, { keepFocus: true });
     }
+
+    function lazy() {
+        const observer = new IntersectionObserver((entries) => {
+            for (let index = 0; index < entries.length; index++) {
+                const entry = entries[index];
+
+                if (!entry.isIntersecting) {
+                    continue;
+                }
+
+                console.log("loader on sight");
+            }
+        });
+
+        const loader = document.getElementById("photosLoader");
+        if (loader) {
+            observer.observe(loader);
+        }
+    }
 </script>
 
-<section class="padded grid-250">
+<section class="padded grid-250" on:scroll={lazy}>
     {#await photos then photos}
         {#each photos as photo (photo.id)}
             <PhotoListItem {photo} on:selection={handleSelection} />
         {/each}
     {/await}
+    <div id="photosLoader" />
 </section>
 
 <style lang="scss">
