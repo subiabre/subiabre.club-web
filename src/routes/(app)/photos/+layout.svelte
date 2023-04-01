@@ -28,10 +28,5 @@
         <FilterDescription />
     </div>
 </TraySlide>
-<TraySlide id="results">
-    <div class="padded">
-        <h1>Colección</h1>
-    </div>
-    <PhotoList />
-</TraySlide>
+<PhotoList />
 <slot />

@@ -1,6 +1,7 @@
 <script lang="ts">
     import { goto } from "$app/navigation";
     import { api } from "$lib/api";
+    import TraySlide from "$lib/layout/TraySlide.svelte";
     import { filters } from "$lib/stores";
     import PhotoListItem from "./PhotoListItem.svelte";
 
@@ -16,6 +17,7 @@
     }
 
     function lazy() {
+        console.log("tracking loader");
         const observer = new IntersectionObserver((entries) => {
             for (let index = 0; index < entries.length; index++) {
                 const entry = entries[index];
@@ -35,14 +37,19 @@
     }
 </script>
 
-<section class="padded grid-250" on:scroll={lazy}>
-    {#await photos then photos}
-        {#each photos as photo (photo.id)}
-            <PhotoListItem {photo} on:selection={handleSelection} />
-        {/each}
-    {/await}
-    <div id="photosLoader" />
-</section>
+<TraySlide id="results" on:scroll={lazy}>
+    <div class="padded">
+        <h1>Colección</h1>
+    </div>
+    <section id="photosList" class="padded grid-250">
+        {#await photos then photos}
+            {#each photos as photo (photo.id)}
+                <PhotoListItem {photo} on:selection={handleSelection} />
+            {/each}
+        {/await}
+        <div id="photosLoader" />
+    </section>
+</TraySlide>
 
 <style lang="scss">
     section {

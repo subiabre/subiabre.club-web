@@ -11,6 +11,7 @@
 <section
     {id}
     class="slide"
+    on:scroll
     on:click={focus}
     on:keydown={focus}
     bind:this={slide}
