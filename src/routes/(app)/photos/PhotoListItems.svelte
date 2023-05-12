@@ -12,6 +12,7 @@
     const unsubscribe = filters.subscribe(async () => {
         page = 1;
 
+        photos = [];
         photos = await api.photos.getCollection(
             new URLSearchParams([
                 ...$filters,
