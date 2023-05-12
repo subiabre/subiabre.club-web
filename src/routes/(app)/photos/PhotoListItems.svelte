@@ -44,7 +44,7 @@
 </script>
 
 {#each photos as photo}
-    <PhotoListItem {photo} on:selection />
+    <PhotoListItem {photo} />
 {/each}
 <ClickableTile
     on:click={() => {

@@ -1,6 +1,5 @@
 <script lang="ts">
     import { api } from "$lib/api";
-    import { createEventDispatcher } from "svelte";
     import type { Image } from "$lib/api/types/Image";
     import type { Photo } from "$lib/api/types/Photo";
 
@@ -9,28 +8,19 @@
     let cover: Image;
     let coverClass: string = "loading";
 
-    const dispatch = createEventDispatcher();
-
     async function loadCover(photo: Photo) {
-        cover = await api.call(photo.images[0]).then(res => res.json());
-        coverClass = cover.metadata.height - cover.metadata.width > 50 ? "is-tall" : "";
-    }
-
-    function handleSelection(event: MouseEvent | KeyboardEvent) {
-        event.stopPropagation();
-
-        dispatch("selection", { photo });
+        cover = await api.call(photo.images[0]).then((res) => res.json());
+        coverClass =
+            cover.metadata.height - cover.metadata.width > 50 ? "is-tall" : "";
     }
 
     $: loadCover(photo);
 </script>
 
-<figure
-    class={coverClass}
-    on:click={handleSelection}
-    on:keydown={handleSelection}
->
-    <img src={cover?.thumbnails[0].path} alt={cover?.description} />
+<figure class={coverClass}>
+    <a href="/photos/{photo.id}#item" title="Foto #{photo.id}">
+        <img src={cover?.thumbnails[0].path} alt={cover?.description} />
+    </a>
 </figure>
 
 <style lang="scss">
@@ -46,7 +36,11 @@
         opacity: 0;
     }
 
-    figure > img {
+    figure a {
+        display: contents;
+    }
+
+    figure img {
         width: 100%;
         height: 100%;
         object-fit: cover;
