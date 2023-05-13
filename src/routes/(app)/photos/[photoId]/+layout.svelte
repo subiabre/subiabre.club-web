@@ -6,6 +6,7 @@
     import PhotoItemImage from "./PhotoItemImage.svelte";
     import FormPhotoItemDate from "./FormPhotoItemDate.svelte";
     import FormPhotoItemPlace from "./FormPhotoItemPlace.svelte";
+    import { Tag } from "carbon-components-svelte";
 
     let item: TraySlide;
 
@@ -21,7 +22,7 @@
     {#await photo then photo}
         <div class="padded">
             <h1>Foto #{photo.id}</h1>
-            <p>{photo.images.length} imágenes.</p>
+            <Tag>{photo.images.length} imágenes</Tag>
         </div>
         <div>
             {#each photo.images as image}

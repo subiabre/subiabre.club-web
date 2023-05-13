@@ -2,7 +2,7 @@
     import { time } from "$lib/human/time";
     import type { Photo } from "$lib/api/types/Photo";
     import { api } from "$lib/api";
-    import { Button, ToastNotification } from "carbon-components-svelte";
+    import { Button } from "carbon-components-svelte";
 
     export let photo: Photo;
 

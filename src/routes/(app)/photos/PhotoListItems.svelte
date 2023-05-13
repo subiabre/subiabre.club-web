@@ -54,5 +54,5 @@
     >
         Cargar más
     </Button>
-    <p>{photos.length} elementos.</p>
+    <p>{photos.length} elementos</p>
 </div>
