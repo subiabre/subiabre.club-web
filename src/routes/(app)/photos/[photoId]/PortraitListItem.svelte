@@ -72,6 +72,10 @@
             margin: 0 0.5em;
         }
 
+        img {
+            box-shadow: 0px 0px 2px $color-background;
+        }
+
         :global(.bx--modal) {
             width: 100%;
             background: transparent;

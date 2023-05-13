@@ -20,7 +20,7 @@
 
 <style lang="scss">
     ul {
-        margin: 1.5rem 0;
+        margin: 0;
 
         display: flex;
         gap: 1rem;
