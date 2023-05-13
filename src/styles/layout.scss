@@ -16,7 +16,7 @@
     li {
         margin: 1rem 0;
 
-        .menu li{
+        .menu li {
             margin: 0;
 
             a * {
@@ -82,4 +82,11 @@
     .slide:last-child {
         margin-right: 3rem;
     }
+}
+
+.portrait {
+    width: 3rem;
+    height: 3rem;
+
+    border-radius: 100%;
 }

@@ -29,6 +29,7 @@
 
 <li>
     <img
+        class="portrait"
         alt="Recorte de una cara identificada en la foto"
         src={portrait.crop}
         on:click={() => (open = true)}
@@ -49,7 +50,7 @@
             bind:open
         >
             <figure>
-                <img alt="Retrato de una persona" src={portrait.crop} />
+                <img class="portrait" alt="Retrato de una persona" src={portrait.crop} />
             </figure>
             <FormPhotoItemSubject {person} on:submit={handleSubmit} />
         </Modal>
@@ -65,14 +66,6 @@
 
         &:hover {
             cursor: pointer;
-        }
-
-        img {
-            width: 3rem;
-            height: 3rem;
-
-            border-radius: 100%;
-            border: 1px solid $color-background;
         }
 
         p {

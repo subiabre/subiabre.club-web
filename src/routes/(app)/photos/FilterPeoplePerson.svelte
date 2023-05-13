@@ -19,7 +19,7 @@
         if (isActive) {
             dispatch("clear", { person });
         } else {
-            dispatch("select", { person })
+            dispatch("select", { person });
         }
 
         isActive = !isActive;
@@ -34,6 +34,7 @@
     {#await portrait then portrait}
         <figure>
             <img
+                class="portrait"
                 alt="Retrato de {person.familyName}, {person.givenName}."
                 src={portrait.crop}
             />
@@ -52,19 +53,13 @@
 
         opacity: 0.4;
 
-        &:hover,
-        &.is-active {
-            opacity: 1;
-        }
-
         &:hover {
             color: $color-success;
         }
 
-        img {
-            width: auto;
-            height: 3rem;
-            border-radius: 100%;
+        &:hover,
+        &.is-active {
+            opacity: 1;
         }
 
         div,
