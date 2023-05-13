@@ -3,7 +3,7 @@
     import { filters } from "$lib/stores";
     import type { Photo } from "$lib/api/types/Photo";
     import PhotoListItem from "./PhotoListItem.svelte";
-    import { ClickableTile } from "carbon-components-svelte";
+    import { Button } from "carbon-components-svelte";
     import { onDestroy, onMount } from "svelte";
 
     let page = 1;
@@ -14,10 +14,7 @@
 
         photos = [];
         photos = await api.photos.getCollection(
-            new URLSearchParams([
-                ...$filters,
-                ["date[order]", "asc"]
-            ])
+            new URLSearchParams([...$filters, ["date[order]", "asc"]])
         );
     });
 
@@ -46,13 +43,16 @@
 {#each photos as photo}
     <PhotoListItem {photo} />
 {/each}
-<ClickableTile
-    on:click={() => {
-        page++;
-        loadPhotos();
-    }}
->
-    <h3>Cargar más</h3>
-    <p>Página {page}.</p>
+<div>
+    <Button
+        kind="tertiary"
+        disabled={photos.length % 30 != 0}
+        on:click={() => {
+            page++;
+            loadPhotos();
+        }}
+    >
+        Cargar más
+    </Button>
     <p>{photos.length} elementos.</p>
-</ClickableTile>
+</div>
