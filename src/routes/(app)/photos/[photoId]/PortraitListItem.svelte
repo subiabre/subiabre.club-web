@@ -68,7 +68,7 @@
         }
 
         img {
-            width: auto;
+            width: 3rem;
             height: 3rem;
 
             border-radius: 100%;
