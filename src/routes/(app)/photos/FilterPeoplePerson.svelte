@@ -65,6 +65,7 @@
         div,
         div p {
             margin: 0 0.5em;
+            white-space: nowrap;
         }
     }
 </style>
